@@ -12,7 +12,18 @@
 </head>
 <body id="body-app">
 
-  <!-- TELEGRAM BADGE -->
+  <div id="onboardingModal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <h2>Join the Inner Circle</h2>
+      <p>Get exclusive CPA offers and private funnel scripts before they go public.</p>
+      <form class="modal-form">
+        <input type="email" class="modal-input" placeholder="Enter your email" required />
+        <button type="submit" class="modal-btn">Unlock Access</button>
+      </form>
+    </div>
+  </div>
+
   <a id="tgBadge" class="tg-badge" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
     <div class="dot" aria-hidden="true">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -20,17 +31,13 @@
       </svg>
     </div>
     <div class="label">Telegram</div>
-    <div class="count" id="tgCount">0</div>
+    <div class="count" id="tgCount"></div>
   </a>
 
-  <!-- cursor follower -->
-  <div id="cursor-follower" aria-hidden="true"></div>
-
   <div class="page-bg" aria-hidden="true">
-    <div class="blob blob-1"></div>
+    <div class="grid-overlay"></div> <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
-    <div class="grain"></div>
   </div>
 
   <main class="site" id="site-root">
@@ -49,7 +56,6 @@
     <section class="hero">
       <div class="wrap hero-wrap">
         <div class="card" id="card">
-          <div class="shine" aria-hidden="true"></div>
           <div class="glow" aria-hidden="true"></div>
 
           <div class="content">
@@ -72,7 +78,7 @@
             <div class="visual">
               <div class="animWrap" id="lottie-hero" aria-hidden="false">
                 <div class="fallback" id="lottie-fallback">
-                  <svg width="120" height="120" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                     <circle cx="12" cy="12" r="10" stroke="#2b65ff" stroke-width="1.8" fill="rgba(43,101,255,0.06)"/>
                   </svg>
                 </div>
@@ -84,20 +90,19 @@
       </div>
     </section>
 
-    <!-- Features, counters & FAQ -->
     <section class="features section" id="features">
       <div class="wrap">
         <h2>What you get</h2>
         <div class="features-grid">
-          <article class="feature-card" data-anim>
+          <article class="feature-card">
             <h3>Fast payouts</h3>
             <p>Binance & local methods, simple withdrawals and timely processing.</p>
           </article>
-          <article class="feature-card" data-anim>
+          <article class="feature-card">
             <h3>Creative packs</h3>
             <p>Ads, short videos and banners tailor-made to convert in MENA.</p>
           </article>
-          <article class="feature-card" data-anim>
+          <article class="feature-card">
             <h3>Tracking & reports</h3>
             <p>Simple dashboards, weekly deep dives and affiliate coaching.</p>
           </article>
@@ -112,11 +117,11 @@
         <div class="faq">
           <h3>Quick FAQ</h3>
           <div class="qa">
-            <button class="q">How do payouts work?</button>
+            <button class="q">How do payouts work? <span>+</span></button>
             <div class="a">We use Binance wallets and local methods, paid weekly on approval.</div>
           </div>
           <div class="qa">
-            <button class="q">How do I track my players?</button>
+            <button class="q">How do I track my players? <span>+</span></button>
             <div class="a">We give a tracking dashboard or you can request periodic reports.</div>
           </div>
         </div>
@@ -126,14 +131,14 @@
     <section id="about" class="section">
       <div class="wrap">
         <h2 data-i18n="about.title">About</h2>
-        <p data-i18n="about.copy">We help recruit and manage affiliates for sportsbook campaigns. Replace copy and Lottie with your assets to fully brand this page.</p>
+        <p data-i18n="about.copy" style="max-width: 600px; color: var(--muted)">We help recruit and manage affiliates for sportsbook campaigns. Replace copy and Lottie with your assets to fully brand this page.</p>
       </div>
     </section>
 
     <section id="join" class="section section--muted">
-      <div class="wrap">
+      <div class="wrap" style="text-align: center; background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px;">
         <h2 data-i18n="join.title">Ready to join?</h2>
-        <p data-i18n="join.copy">Register via the link or message me on Telegram — I'll walk you through the setup and best performing funnels.</p>
+        <p data-i18n="join.copy" style="margin-bottom: 20px;">Register via the link or message me on Telegram — I'll walk you through the setup and best performing funnels.</p>
         <a class="btn primary" href="https://t.me/ZAYN1x" data-i18n="join.cta">Contact on Telegram</a>
       </div>
     </section>
