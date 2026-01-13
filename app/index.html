@@ -12,18 +12,19 @@
 </head>
 <body id="body-app">
 
-  <!-- TELEGRAM BADGE (replace old tg-float) -->
-<a id="tgBadge" class="tg-badge" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
-  <div class="dot" aria-hidden="true">
-    <!-- telegram paper plane SVG -->
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
-    </svg>
-  </div>
-  <div class="label">Telegram</div>
-  <div class="count" id="tgCount">0</div>
-</a>
+  <!-- TELEGRAM BADGE -->
+  <a id="tgBadge" class="tg-badge" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
+    <div class="dot" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="label">Telegram</div>
+    <div class="count" id="tgCount">0</div>
+  </a>
 
+  <!-- cursor follower -->
+  <div id="cursor-follower" aria-hidden="true"></div>
 
   <div class="page-bg" aria-hidden="true">
     <div class="blob blob-1"></div>
@@ -40,7 +41,7 @@
           <a href="../index.html" data-i18n="nav.home">Home</a>
           <a href="page2.html" id="guideLink" data-i18n="nav.guide">Guide</a>
           <a href="#join" class="btn-ghost" id="joinLink" data-i18n="nav.join">Join</a>
-          <button id="langToggle" class="lang-btn">AR</button>
+          <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
         </nav>
       </div>
     </header>
@@ -83,44 +84,44 @@
       </div>
     </section>
 
-    <!-- ==== New Explore / Features section ==== -->
-<section class="features section" id="features">
-  <div class="wrap">
-    <h2>What you get</h2>
-    <div class="features-grid">
-      <article class="feature-card" data-anim>
-        <h3>Fast payouts</h3>
-        <p>Binance & local methods, simple withdrawals and timely processing.</p>
-      </article>
-      <article class="feature-card" data-anim>
-        <h3>Creative packs</h3>
-        <p>Ads, short videos and banners tailor-made to convert in MENA.</p>
-      </article>
-      <article class="feature-card" data-anim>
-        <h3>Tracking & reports</h3>
-        <p>Simple dashboards, weekly deep dives and affiliate coaching.</p>
-      </article>
-    </div>
+    <!-- Features, counters & FAQ -->
+    <section class="features section" id="features">
+      <div class="wrap">
+        <h2>What you get</h2>
+        <div class="features-grid">
+          <article class="feature-card" data-anim>
+            <h3>Fast payouts</h3>
+            <p>Binance & local methods, simple withdrawals and timely processing.</p>
+          </article>
+          <article class="feature-card" data-anim>
+            <h3>Creative packs</h3>
+            <p>Ads, short videos and banners tailor-made to convert in MENA.</p>
+          </article>
+          <article class="feature-card" data-anim>
+            <h3>Tracking & reports</h3>
+            <p>Simple dashboards, weekly deep dives and affiliate coaching.</p>
+          </article>
+        </div>
 
-    <div class="stats-row">
-      <div class="stat" data-count="1200"><strong class="num">0</strong><span>Affiliates</span></div>
-      <div class="stat" data-count="35"><strong class="num">0</strong><span>Avg Rev %</span></div>
-      <div class="stat" data-count="98"><strong class="num">0</strong><span>FTD rate</span></div>
-    </div>
+        <div class="stats-row">
+          <div class="stat" data-count="1200"><strong class="num">0</strong><span>Affiliates</span></div>
+          <div class="stat" data-count="35"><strong class="num">0</strong><span>Avg Rev %</span></div>
+          <div class="stat" data-count="98"><strong class="num">0</strong><span>FTD rate</span></div>
+        </div>
 
-    <div class="faq">
-      <h3>Quick FAQ</h3>
-      <div class="qa">
-        <button class="q">How do payouts work?</button>
-        <div class="a">We use Binance wallets and local methods, paid weekly on approval.</div>
+        <div class="faq">
+          <h3>Quick FAQ</h3>
+          <div class="qa">
+            <button class="q">How do payouts work?</button>
+            <div class="a">We use Binance wallets and local methods, paid weekly on approval.</div>
+          </div>
+          <div class="qa">
+            <button class="q">How do I track my players?</button>
+            <div class="a">We give a tracking dashboard or you can request periodic reports.</div>
+          </div>
+        </div>
       </div>
-      <div class="qa">
-        <button class="q">How do I track my players?</button>
-        <div class="a">We give a tracking dashboard or you can request periodic reports.</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section id="about" class="section">
       <div class="wrap">
@@ -141,8 +142,5 @@
       <div class="wrap">© ZAYN1x — <span id="year"></span></div>
     </footer>
   </main>
-
-  <!-- cursor follower -->
-  <div id="cursor-follower" aria-hidden="true"></div>
 </body>
 </html>
