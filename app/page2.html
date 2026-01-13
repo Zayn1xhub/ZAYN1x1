@@ -6,48 +6,26 @@
   <title>ZAYN1x — Guide</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/i18n.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', ()=> {
-      i18n.init();
-      // attach safe back behavior
-      const back = document.getElementById('backBtn');
-      if (back) {
-        back.addEventListener('click', (e) => {
-          e.preventDefault();
-          if (history.length > 1) {
-            history.back();
-            setTimeout(()=> {
-              // if still on this page after back (no history jump), fallback
-              if (location.pathname.endsWith('/app/page2.html')) location.href = './index.html';
-            }, 350);
-          } else {
-            location.href = './index.html';
-          }
-        });
-      }
-      // connect language toggle if present
-      const langToggle = document.getElementById('langToggle');
-      if (langToggle) {
-        langToggle.textContent = i18n.getCurrent() === 'en' ? 'AR' : 'EN';
-        langToggle.addEventListener('click', () => {
-          i18n.toggle();
-          langToggle.textContent = i18n.getCurrent() === 'en' ? 'AR' : 'EN';
-        });
-      }
-    });
-  </script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <!-- Telegram CTA -->
-  <a class="tg-float" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
-    </svg>
+  <!-- TELEGRAM BADGE -->
+  <a id="tgBadge" class="tg-badge" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
+    <div class="dot" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="label">Telegram</div>
+    <div class="count" id="tgCount">0</div>
   </a>
+
+  <!-- cursor follower -->
+  <div id="cursor-follower" aria-hidden="true"></div>
 
   <div class="wrap" style="padding-top:40px;">
     <a href="#" id="backBtn" class="btn secondary" data-back>← <span data-i18n="nav.home">Home</span></a>
-    <button id="langToggle" style="margin-left:12px" class="lang-btn">AR</button>
+    <button id="langToggle" style="margin-left:12px" class="lang-btn"><span class="lang-label">AR</span></button>
 
     <h1 style="margin-top:18px;color:white" data-i18n="page2.title">Quick Guide</h1>
     <p style="max-width:740px;color:var(--muted)" data-i18n="page2.copy">Use this page to add onboarding, CPA offers, best promo examples, scripts, or short video walkthroughs for affiliates. Create more pages like this: page3.html, creatives.html, faq.html — link them from the top nav.</p>
