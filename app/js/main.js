@@ -1,6 +1,26 @@
 // app/js/main.js
 // Handles: i18n init, lottie loading, parallax, transitions, cursor follower, and history-safe back
 document.addEventListener('DOMContentLoaded', () => {
+  
+  // TG badge: demo pulse + set/unset unread count API
+(function initTGBadge(){
+  const badge = document.getElementById('tgBadge');
+  const cntEl = document.getElementById('tgCount');
+  if (!badge) return;
+  // demo unread count (you can update window.TG.setCount from console)
+  window.TG = window.TG || {};
+  window.TG.setCount = (n) => {
+    if(!cntEl) return;
+    cntEl.textContent = n > 99 ? '99+' : String(n);
+    cntEl.style.display = n > 0 ? 'inline-block' : 'none';
+  };
+  // start with 3 unread as demo
+  window.TG.setCount(3);
+  // subtle bounce on hover
+  badge.addEventListener('mouseenter', ()=> badge.style.transform = 'translateY(-4px) scale(1.02)');
+  badge.addEventListener('mouseleave', ()=> badge.style.transform = '');
+})();
+
   // i18n must be loaded first (i18n.js)
   if (typeof i18n !== 'undefined') i18n.init();
 
