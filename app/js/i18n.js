@@ -1,5 +1,5 @@
 // app/js/i18n.js
-// Lightweight client-side i18n for EN/AR, persists in localStorage key 'zayn1x_lang'
+// Lightweight EN/AR client-side i18n with RTL support and safe label injection
 window.i18n = (function(){
   const KEY = 'zayn1x_lang';
   const defaults = 'en';
@@ -74,7 +74,6 @@ window.i18n = (function(){
 
   function apply(lang){
     document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
-    // set dir for RTL
     if (lang === 'ar') {
       document.documentElement.setAttribute('dir', 'rtl');
       document.body.setAttribute('dir', 'rtl');
@@ -82,7 +81,6 @@ window.i18n = (function(){
       document.documentElement.setAttribute('dir', 'ltr');
       document.body.setAttribute('dir', 'ltr');
     }
-    // replace text nodes for elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       if (dict[lang] && dict[lang][key]) {
@@ -91,10 +89,25 @@ window.i18n = (function(){
     });
   }
 
+  // safer label injection for the language toggle button (avoids emoji-substitution)
+  function setLangBtn(btn){
+    if (!btn) return;
+    // remove old label span if exists
+    const old = btn.querySelector('.lang-label');
+    if (old) old.remove();
+    const s = document.createElement('span');
+    s.className = 'lang-label';
+    s.innerText = getCurrent() === 'en' ? 'AR' : 'EN';
+    btn.appendChild(s);
+  }
+
   function init(){
     const lang = getCurrent();
     apply(lang);
+    // update any existing lang toggle button(s)
+    const btns = document.querySelectorAll('#langToggle');
+    btns.forEach(b => setLangBtn(b));
   }
 
-  return { init, toggle, setLang, getCurrent };
+  return { init, toggle, setLang, getCurrent, setLangBtn };
 })();
