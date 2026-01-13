@@ -41,21 +41,23 @@
     </div>
   </main>
 
-  <script src="app/js/i18n.js" defer></script>
-  <script src="app/js/main.js" defer></script>
+  <script src="app/js/i18n.js"></script>
+  <script src="app/js/main.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      if (typeof i18n !== 'undefined') i18n.init();
+      // 1. Force i18n init to apply language immediately
+      if (window.i18n) window.i18n.init();
+
+      // 2. Setup Toggle
       const langToggle = document.getElementById('langToggle');
-      if (langToggle) {
-        i18n.setLangBtn && i18n.setLangBtn(langToggle);
+      if (langToggle && window.i18n) {
         langToggle.addEventListener('click', () => {
-          i18n.toggle();
-          i18n.setLangBtn && i18n.setLangBtn(langToggle);
+          window.i18n.toggle();
         });
       }
 
+      // 3. Exit Animation
       const enter = document.getElementById('enterBtn');
       const card = document.getElementById('splashCard');
       enter.addEventListener('click', () => {
