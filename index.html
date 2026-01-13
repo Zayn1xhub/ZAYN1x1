@@ -1,99 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ZAYN1x — Affiliate</title>
-  <meta name="description" content="ZAYN1x — Premium motion-first affiliate brand" />
-
-  <!-- style -->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- lottie (CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
-
-  <!-- main js -->
-  <script defer src="js/main.js"></script>
+  <title>ZAYN1x — Enter</title>
+  <meta name="description" content="ZAYN1x — entrance" />
+  <link rel="stylesheet" href="app/css/splash.css">
 </head>
 <body>
-
-  <!-- decorative background blobs -->
-  <div class="page-bg" aria-hidden="true">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="grain"></div>
-  </div>
-
-  <main class="site">
-    <header class="topbar">
-      <div class="wrap">
-        <div class="logo">ZAYN1x</div>
-        <nav class="nav">
-          <a href="#about">About</a>
-          <a href="#join" class="btn-ghost">Join</a>
-        </nav>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="wrap hero-wrap">
-        <div class="card" id="card">
-          <div class="shine" aria-hidden="true"></div>
-          <div class="glow" aria-hidden="true"></div>
-
-          <div class="content">
-            <div class="copy">
-              <h1 class="title">ZAYN1x — Build. Recruit. Earn.</h1>
-              <p class="lead">Premium motion-first affiliate brand — recruitment, management and creative for sportsbook promo.</p>
-
-              <div class="actions">
-                <a class="btn primary" href="#join">Get started</a>
-                <a class="btn secondary" href="https://t.me/YOUR_TELEGRAM" target="_blank" rel="noopener">Contact on Telegram</a>
-              </div>
-
-              <ul class="stats">
-                <li><strong>1K+</strong><span>Affiliates</span></li>
-                <li><strong>25–40%</strong><span>Revenue Share</span></li>
-                <li><strong>Binance</strong><span>Payouts</span></li>
-              </ul>
-            </div>
-
-            <div class="visual">
-              <div class="animWrap" id="lottie-hero" aria-hidden="false">
-                <!-- fallback shown when lottie file missing -->
-                <div class="fallback" id="lottie-fallback">
-                  <svg width="120" height="120" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10" stroke="#2b65ff" stroke-width="1.8" fill="rgba(43,101,255,0.06)"/>
-                  </svg>
-                </div>
-              </div>
-              <div class="caption">Real affiliates. Real payouts. Real support.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="wrap">
-        <h2>About</h2>
-        <p>We help recruit and manage affiliates for sportsbook campaigns. Replace copy and Lottie with your assets to fully brand this page.</p>
-      </div>
-    </section>
-
-    <section id="join" class="section section--muted">
-      <div class="wrap">
-        <h2>Ready to join?</h2>
-        <p>Register via the link or message me on Telegram — I'll walk you through the setup and best performing funnels.</p>
-        <a class="btn primary" href="https://t.me/YOUR_TELEGRAM">Contact on Telegram</a>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="wrap">© ZAYN1x — <span id="year"></span></div>
-    </footer>
+  <main class="splash-wrap" role="main">
+    <div class="splash-card" id="splashCard" aria-labelledby="splashTitle">
+      <h1 id="splashTitle">ZAYN1x</h1>
+      <p class="sub">Premium motion-first affiliate brand</p>
+      <button id="enterBtn" class="enter">Enter</button>
+      <div class="stripe" aria-hidden="true"></div>
+    </div>
   </main>
 
+  <script>
+    // basic fade + redirect to /app/
+    const enter = document.getElementById('enterBtn');
+    const card = document.getElementById('splashCard');
+    enter.addEventListener('click', () => {
+      card.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s ease';
+      card.style.transform = 'scale(.96) translateY(-6px)';
+      card.style.opacity = '0';
+      // slight delay so animation shows
+      setTimeout(() => { location.href = './app/'; }, 520);
+    });
+  </script>
 </body>
 </html>
