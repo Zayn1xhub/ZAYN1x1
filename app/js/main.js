@@ -1,5 +1,10 @@
 // app/js/main.js
+// Handles: i18n init, lottie loading, parallax, transitions, cursor follower, and history-safe back
 document.addEventListener('DOMContentLoaded', () => {
+  // i18n must be loaded first (i18n.js)
+  if (typeof i18n !== 'undefined') i18n.init();
+
+  // set year
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
@@ -7,6 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const animWrap = document.getElementById('lottie-hero');
   const fallback = document.getElementById('lottie-fallback');
 
+  // Smooth app entry: add class and then ready
+  document.body.classList.add('app-enter');
+  window.requestAnimationFrame(() => {
+    setTimeout(()=> {
+      document.body.classList.remove('app-enter');
+      document.body.classList.add('app-ready');
+    }, 80);
+  });
+
+  // entrance
   if (card) {
     card.style.opacity = 0;
     card.style.transform = 'translateY(18px)';
@@ -19,6 +34,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // add cursor follower
+  (function cursorFollower() {
+    const follower = document.getElementById('cursor-follower');
+    if (!follower) return;
+    let lastX = window.innerWidth / 2;
+    let lastY = window.innerHeight / 2;
+    let raf = null;
+
+    document.addEventListener('mousemove', (e) => {
+      lastX = e.clientX;
+      lastY = e.clientY;
+      follower.style.opacity = 1;
+      follower.style.transform = `translate(${lastX}px, ${lastY}px) scale(1)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      follower.style.opacity = 0;
+    });
+
+    // enlarge follower over interactive elements
+    const interactive = document.querySelectorAll('a, button, .btn, .animWrap');
+    interactive.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        follower.style.transform += ' scale(1.6)';
+        follower.style.transition = 'transform .12s ease, opacity .12s ease';
+      });
+      el.addEventListener('mouseleave', () => {
+        follower.style.transform = `translate(${lastX}px, ${lastY}px) scale(1)`;
+      });
+    });
+  })();
+
+  // light cursor parallax for depth on card
   (function addParallax() {
     if (!card) return;
     const maxTilt = 10;
@@ -43,6 +91,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  // history-safe back links (page2)
+  // if there is a .back-fallback link we will intercept it in the page html (see page2.html)
+  (function safeBackLinks(){
+    document.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (history.length > 1) {
+          history.back();
+          // fallback if not navigated within 400ms
+          setTimeout(() => {
+            if (location.pathname.endsWith('/page2.html') || location.pathname.endsWith('/page2.html/')) {
+              location.href = './index.html';
+            }
+          }, 400);
+        } else {
+          // no history: go to app index
+          location.href = './index.html';
+        }
+      });
+    });
+  })();
+
+  // try load lottie
   (function tryLoadLottie() {
     if (!window.lottie || !animWrap) return;
     const path = 'assets/lottie/hero.json';
@@ -65,4 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }).catch(()=>{});
   })();
+
+  // language toggle binding (button id langToggle)
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle && typeof i18n !== 'undefined') {
+    langToggle.textContent = i18n.getCurrent() === 'en' ? 'AR' : 'EN';
+    langToggle.addEventListener('click', () => {
+      i18n.toggle();
+      langToggle.textContent = i18n.getCurrent() === 'en' ? 'AR' : 'EN';
+    });
+  }
 });
