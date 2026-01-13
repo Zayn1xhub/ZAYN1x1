@@ -63,6 +63,10 @@ window.i18n = (function(){
       'page2.offer.title': 'Flash Bonus Offer',
       'page2.offer.desc': 'Use this creative for the Champions League Final. High conversion expected.',
       'page2.download': 'Download Pack'
+      'page2.pdf.title': 'Program Guide (PDF)',
+'page2.pdf.desc': 'Full breakdown of CPA/RevShare tiers, prohibited traffic sources, and brand assets.',
+'page2.form.title': 'Official Application',
+'page2.form.desc': 'Submit your traffic sources for manual review. Approval typically takes 24 hours.',
     },
     ar: {
       'splash.title': 'ZAYN1x',
@@ -76,6 +80,7 @@ window.i18n = (function(){
       'hero.cta': 'ابدأ الربح',
       'hero.contact': 'راسلني مباشرة',
       'hero.caption': 'نقبل شركاء جدد للربع الرابع 2024',
+  
       
       // Calculator
       'calc.title': 'احسب أرباحك المتوقعة',
@@ -125,6 +130,10 @@ window.i18n = (function(){
       'page2.offer.title': 'عرض بونص سريع',
       'page2.offer.desc': 'استخدم هذا الإعلان لنهائي دوري الأبطال. متوقع تحويل عالي جداً.',
       'page2.download': 'تحميل الحزمة'
+'page2.pdf.title': 'دليل البرنامج (PDF)',
+'page2.pdf.desc': 'تفاصيل كاملة عن مستويات العمولات، مصادر الزيارات الممنوعة، وملفات الهوية البصرية.',
+'page2.form.title': 'نموذج الانضمام الرسمي',
+'page2.form.desc': 'قدم مصادر زياراتك للمراجعة اليدوية. الموافقة تستغرق عادة 24 ساعة.',
     }
   };
 
