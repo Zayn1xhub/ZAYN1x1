@@ -9,25 +9,26 @@
 </head>
 <body id="body-root">
 
- <!-- TELEGRAM BADGE (replace old tg-float) -->
-<a id="tgBadge" class="tg-badge" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
-  <div class="dot" aria-hidden="true">
-    <!-- telegram paper plane SVG -->
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
-    </svg>
-  </div>
-  <div class="label">Telegram</div>
-  <div class="count" id="tgCount">0</div>
-</a>
+  <!-- TELEGRAM BADGE -->
+  <a id="tgBadge" class="tg-badge" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
+    <div class="dot" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="label">Telegram</div>
+    <div class="count" id="tgCount">0</div>
+  </a>
 
+  <!-- cursor follower -->
+  <div id="cursor-follower" aria-hidden="true"></div>
 
   <main class="splash-wrap" role="main">
     <div class="splash-card" id="splashCard" aria-labelledby="splashTitle">
       <div class="toprow">
         <div class="logo">ZAYN1x</div>
         <div class="lang">
-          <button id="langToggle">AR</button>
+          <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
         </div>
       </div>
 
@@ -42,23 +43,30 @@
     </div>
   </main>
 
-  <script src="app/js/i18n.js"></script>
-  <script>
-    // init language (i18n.js handles localStorage)
-    window.addEventListener('DOMContentLoaded', () => {
-      i18n.init();
-      // wire toggle
-      document.getElementById('langToggle').addEventListener('click', () => {
-        i18n.toggle();
-      });
+  <!-- i18n + main (for follower, tg badge, transitions) -->
+  <script src="app/js/i18n.js" defer></script>
+  <script src="app/js/main.js" defer></script>
 
-      // splash enter animation then redirect with smoother transition
+  <script>
+    // small glue for splash: init i18n and language toggle wiring
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof i18n !== 'undefined') i18n.init();
+      const langToggle = document.getElementById('langToggle');
+      if (langToggle) {
+        // ensure the span label exists (i18n.setLangBtn used by module too)
+        i18n.setLangBtn && i18n.setLangBtn(langToggle);
+        langToggle.addEventListener('click', () => {
+          i18n.toggle();
+          i18n.setLangBtn && i18n.setLangBtn(langToggle);
+        });
+      }
+
+      // splash enter -> smooth exit animation -> go to app
       const enter = document.getElementById('enterBtn');
       const card = document.getElementById('splashCard');
       enter.addEventListener('click', () => {
         card.classList.add('exiting');
-        // small delay to show the exit animation
-        setTimeout(() => { location.href = './app/index.html'; }, 560);
+        setTimeout(() => { location.href = './app/index.html'; }, 540);
       });
     });
   </script>
