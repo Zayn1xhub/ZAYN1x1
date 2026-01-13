@@ -14,6 +14,8 @@ body{
   align-items:center;
   justify-content:center;
   color:var(--muted);
+  /* hide system cursor — follower will show instead */
+  cursor: none;
 }
 .splash-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
 .splash-card{
@@ -39,14 +41,17 @@ body{
 .enter:active{transform:translateY(1px)}
 .enter:hover{transform:translateY(-3px)}
 
-/* replace fast stripe with subtle rotating pulse behind card */
+/* stable rotating soft pulse behind card — separate element so JS won't override it */
 .stripe{
   position:absolute;left:50%;top:50%;width:640px;height:640px;border-radius:50%;transform:translate(-50%,-50%) scale(.9);pointer-events:none;
   background: radial-gradient(circle at 35% 35%, rgba(43,101,255,0.16), transparent 25%),
               radial-gradient(circle at 65% 65%, rgba(255,120,200,0.06), transparent 30%);
   filter: blur(36px) saturate(1.06);
   opacity:.95;
+  will-change: transform, opacity, filter;
+  /* ensure animation keeps running */
   animation:spinPulse 14s linear infinite;
+  animation-play-state: running !important;
 }
 @keyframes spinPulse{
   0%{transform:translate(-50%,-50%) rotate(0deg) scale(.92); opacity:.95}
@@ -54,11 +59,22 @@ body{
   100%{transform:translate(-50%,-50%) rotate(360deg) scale(.92); opacity:.95}
 }
 
-/* Telegram floating button (also shown on app pages) */
-.tg-float{
-  position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:12px;background:linear-gradient(180deg,#2b6bff,#1f53d6);
-  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(43,101,255,0.16);z-index:9999;color:#fff;text-decoration:none;
+/* nicer TG badge placeholder: keep tg-float removed — we replace globally */
+.tg-badge{
+  position:fixed;right:18px;bottom:18px;z-index:9999;
+  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:14px;background:linear-gradient(90deg,#2b6bff,#1f53d6);
+  color:#fff;text-decoration:none;font-weight:700;box-shadow:0 12px 36px rgba(43,101,255,0.12);
+  transform-origin:center;pointer-events:auto;cursor:pointer;
 }
+.tg-badge .dot{
+  width:28px;height:28px;border-radius:9px;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 14px rgba(2,6,23,0.3);
+}
+.tg-badge .count{
+  background:rgba(0,0,0,0.12);padding:4px 8px;border-radius:999px;font-size:13px;
+  animation:badgePulse 2.2s infinite;
+}
+@keyframes badgePulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
 
 /* small screens */
 @media(max-width:680px){
