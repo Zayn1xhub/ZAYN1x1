@@ -7,26 +7,53 @@
   <meta name="description" content="ZAYN1x — entrance" />
   <link rel="stylesheet" href="app/css/splash.css">
 </head>
-<body>
+<body id="body-root">
+
+  <!-- Telegram CTA (global) -->
+  <a class="tg-float" href="https://t.me/ZAYN1x" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M22 3L2 12.3l4.4 1.6L9 21l3.1-3.2 5.9 4.1L22 3z" fill="#fff"/>
+    </svg>
+  </a>
+
   <main class="splash-wrap" role="main">
     <div class="splash-card" id="splashCard" aria-labelledby="splashTitle">
-      <h1 id="splashTitle">ZAYN1x</h1>
-      <p class="sub">Premium motion-first affiliate brand</p>
-      <button id="enterBtn" class="enter">Enter</button>
+      <div class="toprow">
+        <div class="logo">ZAYN1x</div>
+        <div class="lang">
+          <button id="langToggle">AR</button>
+        </div>
+      </div>
+
+      <h1 id="splashTitle" data-i18n="splash.title">ZAYN1x</h1>
+      <p class="sub" id="splashSub" data-i18n="splash.sub">Premium motion-first affiliate brand</p>
+
+      <div class="cta-wrap">
+        <button id="enterBtn" class="enter" data-i18n="splash.enter">Enter</button>
+      </div>
+
       <div class="stripe" aria-hidden="true"></div>
     </div>
   </main>
 
+  <script src="app/js/i18n.js"></script>
   <script>
-    // basic fade + redirect to /app/
-    const enter = document.getElementById('enterBtn');
-    const card = document.getElementById('splashCard');
-    enter.addEventListener('click', () => {
-      card.style.transition = 'transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s ease';
-      card.style.transform = 'scale(.96) translateY(-6px)';
-      card.style.opacity = '0';
-      // slight delay so animation shows
-      setTimeout(() => { location.href = './app/'; }, 520);
+    // init language (i18n.js handles localStorage)
+    window.addEventListener('DOMContentLoaded', () => {
+      i18n.init();
+      // wire toggle
+      document.getElementById('langToggle').addEventListener('click', () => {
+        i18n.toggle();
+      });
+
+      // splash enter animation then redirect with smoother transition
+      const enter = document.getElementById('enterBtn');
+      const card = document.getElementById('splashCard');
+      enter.addEventListener('click', () => {
+        card.classList.add('exiting');
+        // small delay to show the exit animation
+        setTimeout(() => { location.href = './app/index.html'; }, 560);
+      });
     });
   </script>
 </body>
