@@ -15,10 +15,25 @@
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <h2>Join My Private Circle</h2>
       <p style="color:#94a3b8; margin-bottom:20px">Get the exact funnels my top partners are using to make $10k/mo.</p>
-      <form onsubmit="event.preventDefault(); alert('Welcome to the team.'); document.getElementById('onboardingModal').classList.remove('active');">
-        <input type="email" class="modal-input" placeholder="Telegram ID or Email" required>
-        <button type="submit" class="modal-btn">Unlock Access</button>
+      <form id="onboardingForm" onsubmit="event.preventDefault();">
+        <!-- Step 1: Quick Question -->
+        <div id="step1" class="modal-step">
+          <label style="color:#fff; font-size:14px; font-weight:600">What's your main traffic source?</label>
+          <select id="trafficSource" class="modal-input" required>
+            <option value="">Select...</option>
+            <option value="tiktok">TikTok/Reels</option>
+            <option value="seo">SEO/Website</option>
+            <option value="other">Other</option>
+          </select>
+          <button type="button" class="modal-btn" onclick="nextStep(1)">Next</button>
+        </div>
+        <!-- Step 2: Contact Info -->
+        <div id="step2" class="modal-step" style="display:none;">
+          <input type="text" id="telegramId" class="modal-input" placeholder="Telegram ID or Email" required>
+          <button type="submit" class="modal-btn">Unlock Access & Register</button>
+        </div>
       </form>
+      <p id="formMessage" style="color:#4ade80; margin-top:10px; display:none;">Thanks! I'll DM you for signup.</p>
     </div>
   </div>
 
@@ -60,26 +75,45 @@
             <div class="calculator-wrap">
               <span class="calc-header" data-i18n="calc.title">Calculate Your Potential</span>
               
-              <label style="color:#fff; font-size:14px; font-weight:600" data-i18n="calc.label">Monthly FTDs (First Time Depositors)</label>
-              <input 
-                type="range" 
-                min="10" 
-                max="500" 
-                value="50" 
-                class="range-slider" 
-                id="ftdRange"
-                aria-label="Monthly FTD slider"
-                aria-valuemin="10"
-                aria-valuemax="500"
-                aria-valuenow="50"
-              >
-              <div style="text-align:right; font-weight:700; color:var(--brand); margin-bottom:20px" id="ftdValue">50 FTDs</div>
+              <!-- Upgraded to Quiz -->
+              <div id="quizStep1">
+                <label style="color:#fff; font-size:14px; font-weight:600">Audience Region?</label>
+                <select id="audienceRegion" class="range-slider" style="width:100%; padding:10px; background:#334155; color:#fff; border:none; border-radius:5px;">
+                  <option value="mena">MENA/Arabic</option>
+                  <option value="global">Global</option>
+                  <option value="other">Other</option>
+                </select>
+                <button type="button" style="margin-top:10px; padding:10px; background:var(--brand); color:#fff; border:none; border-radius:5px; width:100%;" onclick="nextQuizStep()">Next</button>
+              </div>
+              <div id="quizStep2" style="display:none;">
+                <label style="color:#fff; font-size:14px; font-weight:600" data-i18n="calc.label">Monthly FTDs (First Time Depositors)</label>
+                <input 
+                  type="range" 
+                  min="10" 
+                  max="500" 
+                  value="50" 
+                  class="range-slider" 
+                  id="ftdRange"
+                  aria-label="Monthly FTD slider"
+                  aria-valuemin="10"
+                  aria-valuemax="500"
+                  aria-valuenow="50"
+                >
+                <div style="text-align:right; font-weight:700; color:var(--brand); margin-bottom:20px" id="ftdValue">50 FTDs</div>
+                <button type="button" style="margin-top:10px; padding:10px; background:var(--brand); color:#fff; border:none; border-radius:5px; width:100%;" onclick="calculateEarnings()">Calculate</button>
+              </div>
               
               <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 20px 0;">
               
               <span class="calc-res-label" data-i18n="calc.result">Est. Monthly Earnings</span>
               <span class="calc-result" id="earningsValue">$2,250</span>
               <p style="font-size:11px; color:#64748b; margin-top:8px" data-i18n="calc.sub">Based on average $45 player value & 35% RevShare</p>
+              <div id="quizResult" style="display:none; margin-top:20px; color:#4ade80;">Personalized tip: For MENA traffic, expect +10% boost!</div>
+              <!-- Gate full results -->
+              <div id="gateForm" style="display:none; margin-top:20px;">
+                <input type="text" id="quizContact" placeholder="Telegram ID or Email" style="width:100%; padding:10px; background:#334155; color:#fff; border:none; border-radius:5px; margin-bottom:10px;">
+                <button type="button" style="padding:10px; background:var(--brand); color:#fff; border:none; border-radius:5px; width:100%;" onclick="submitQuizLead()">Get Full Report</button>
+              </div>
             </div>
           </div>
         </div>
