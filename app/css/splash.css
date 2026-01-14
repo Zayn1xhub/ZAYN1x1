@@ -13,7 +13,7 @@ body{
   background: var(--bg);
   display:flex; align-items:center; justify-content:center;
   color: var(--muted);
-  cursor: auto; /* Reverted to normal */
+  cursor: auto;
 }
 
 /* Backgrounds */
@@ -50,7 +50,8 @@ body{
 
 .toprow { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
 .logo { font-weight: 800; color: #fff; letter-spacing: -0.5px; font-size: 18px; }
-.lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.lang-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 6px 10px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+.lang-btn:hover { background: rgba(255,255,255,0.1); }
 
 h1 { font-size: 48px; color: #fff; margin: 10px 0; letter-spacing: -1px; font-weight: 800; }
 .sub { font-size: 16px; margin-bottom: 32px; color: var(--muted); }
@@ -61,17 +62,25 @@ h1 { font-size: 48px; color: #fff; margin: 10px 0; letter-spacing: -1px; font-we
 }
 .enter:hover { transform: translateY(-2px); box-shadow: 0 15px 35px rgba(43,101,255,0.4); }
 
-/* Telegram Badge (Simplified) */
+/* Telegram Badge */
 .tg-badge {
   position:fixed; right:20px; bottom:20px; z-index:99;
   display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:50px;
   background: #2563eb; color:#fff; text-decoration:none; font-weight:600; font-size:13px;
-  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2); transition: 0.2s;
 }
 .tg-badge:hover { transform: translateY(-2px); }
 .tg-badge .dot { width: 24px; height: 24px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.tg-badge .label { display: block; }
 .tg-badge .count { background: #ef4444; padding: 2px 5px; border-radius: 6px; font-size: 10px; margin-left: auto; display: none; } /* Hidden by default */
 
+/* RTL Support */
+[dir="rtl"] .toprow { flex-direction: row-reverse; }
+[dir="rtl"] .tg-badge { right: auto; left: 20px; }
+
 @media(max-width:600px){
-  .splash-card h1{font-size:36px}
+  .splash-card { padding: 32px; }
+  .splash-card h1 { font-size:36px; }
+  .tg-badge .label { display: none; }
+  .tg-badge { padding: 8px; }
 }
