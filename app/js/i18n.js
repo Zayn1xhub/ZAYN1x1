@@ -62,7 +62,7 @@ window.i18n = (function(){
       'page2.step3d': 'How to use promo code "ZAYN1x" to lock players to your account forever.',
       'page2.offer.title': 'Flash Bonus Offer',
       'page2.offer.desc': 'Use this creative for the Champions League Final. High conversion expected.',
-      'page2.download': 'Download Pack'
+      'page2.download': 'Download Pack',
       'page2.pdf.title': 'Program Guide (PDF)',
 'page2.pdf.desc': 'Full breakdown of CPA/RevShare tiers, prohibited traffic sources, and brand assets.',
 'page2.form.title': 'Official Application',
