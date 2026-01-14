@@ -64,16 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const a = actions[Math.floor(Math.random() * actions.length)];
       const isPayout = a.type === 'payout';
       
-      // Use i18n keys roughly or hardcode for "LIVE" feel
-      const actionText = isPayout ? 
-        `<span style="color:#4ade80">received $${a.amt} (USDT)</span>` : 
-        `<span style="color:#fff">joined the team</span>`;
-      
-      html += `<div class="ticker-item"><strong>${n}</strong> ${actionText}</div>`;
-    }
-    ticker.innerHTML = html;
+      // Use appropriate language
+    const actionText = isPayout ? 
+      `<span style="color:#4ade80">${currentLang === 'ar' ? 'تم تحويل دفعة' : 'received'} $${a.amt} (USDT)</span>` : 
+      `<span style="color:#fff">${currentLang === 'ar' ? 'انضم للفريق' : 'joined the team'}</span>`;
+    
+    html += `<div class="ticker-item"><strong>${n}</strong> ${actionText}</div>`;
   }
-
+  ticker.innerHTML = html;
+}
+  
   // 4. Modal Logic (15s delay or Exit Intent)
   const modal = document.getElementById('onboardingModal');
   if (modal) {
