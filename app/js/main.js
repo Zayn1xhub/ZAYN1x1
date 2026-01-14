@@ -29,9 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const ftds = parseInt(slider.value);
       ftdDisplay.textContent = ftds + ' FTDs';
       
+      // Update aria-valuenow for accessibility
+      slider.setAttribute('aria-valuenow', ftds);
+      
       // Formula: FTDs * AvgValue * RevShare (Simple projection)
-      // Or for CPA: FTDs * CPA_Rate (e.g. $40)
-      const total = Math.round(ftds * avgPlayerValue); // Simplified lifetime value projection for month
+      const total = Math.round(ftds * avgPlayerValue);
       
       // Format currency
       earningsDisplay.textContent = '$' + total.toLocaleString();
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCalc(); // init
   }
 
-  // 3. LIVE TICKER POPULATION
+  // 3. LIVE TICKER POPULATION (with i18n support)
   const ticker = document.querySelector('.ticker-content');
   if(ticker) {
     const names = ['Ahmed S.', 'CryptoKing', 'BetPro_22', 'Sarah_Aff', 'WinTeam', 'Ali_M'];
@@ -57,23 +59,39 @@ document.addEventListener('DOMContentLoaded', () => {
       { type: 'payout', amt: 8900 }
     ];
     
-    let html = '';
-    // Create enough items to scroll
-    for(let i=0; i<12; i++) {
-      const n = names[Math.floor(Math.random() * names.length)];
-      const a = actions[Math.floor(Math.random() * actions.length)];
-      const isPayout = a.type === 'payout';
+    function populateTicker() {
+      let html = '';
+      const currentLang = window.i18n ? window.i18n.getCurrent() : 'en';
       
-      // Use appropriate language
-    const actionText = isPayout ? 
-      `<span style="color:#4ade80">${currentLang === 'ar' ? 'تم تحويل دفعة' : 'received'} $${a.amt} (USDT)</span>` : 
-      `<span style="color:#fff">${currentLang === 'ar' ? 'انضم للفريق' : 'joined the team'}</span>`;
+      // Create enough items to scroll
+      for(let i=0; i<12; i++) {
+        const n = names[Math.floor(Math.random() * names.length)];
+        const a = actions[Math.floor(Math.random() * actions.length)];
+        const isPayout = a.type === 'payout';
+        
+        // Use appropriate language
+        const actionText = isPayout ? 
+          `<span style="color:#4ade80">${currentLang === 'ar' ? 'تم تحويل دفعة' : 'received'} $${a.amt} (USDT)</span>` : 
+          `<span style="color:#fff">${currentLang === 'ar' ? 'انضم للفريق' : 'joined the team'}</span>`;
+        
+        html += `<div class="ticker-item"><strong>${n}</strong> ${actionText}</div>`;
+      }
+      ticker.innerHTML = html;
+    }
     
-    html += `<div class="ticker-item"><strong>${n}</strong> ${actionText}</div>`;
+    populateTicker();
+    
+    // Repopulate ticker when language changes
+    if (window.i18n) {
+      const langToggle = document.getElementById('langToggle');
+      if (langToggle) {
+        langToggle.addEventListener('click', () => {
+          setTimeout(populateTicker, 100); // Small delay to let i18n update
+        });
+      }
+    }
   }
-  ticker.innerHTML = html;
-}
-  
+
   // 4. Modal Logic (15s delay or Exit Intent)
   const modal = document.getElementById('onboardingModal');
   if (modal) {
@@ -81,10 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if(!seen) {
       setTimeout(() => modal.classList.add('active'), 15000); // 15s delay
     }
-    modal.querySelector('.modal-close').addEventListener('click', () => {
-      modal.classList.remove('active');
-      localStorage.setItem('zayn_modal_seen', 'true');
-    });
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+        localStorage.setItem('zayn_modal_seen', 'true');
+      });
+    }
   }
 
   // 5. Counters
