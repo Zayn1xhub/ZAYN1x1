@@ -12,12 +12,12 @@
 
   <div id="onboardingModal" class="modal-overlay">
     <div class="modal-card">
-      <button class="modal-close">&times;</button>
+      <button class="modal-close" aria-label="Close modal">&times;</button>
       <h2>Join My Private Circle</h2>
       <p style="color:#94a3b8; margin-bottom:20px">Get the exact funnels my top partners are using to make $10k/mo.</p>
       <form onsubmit="event.preventDefault(); alert('Welcome to the team.'); document.getElementById('onboardingModal').classList.remove('active');">
         <input type="email" class="modal-input" placeholder="Telegram ID or Email" required>
-        <button class="modal-btn">Unlock Access</button>
+        <button type="submit" class="modal-btn">Unlock Access</button>
       </form>
     </div>
   </div>
@@ -33,7 +33,7 @@
       <div class="wrap">
         <div class="logo">ZAYN1x</div>
         <nav class="nav">
-          <a href="../index.html" data-i18n="nav.home">Dashboard</a>
+          <a href="index.html" data-i18n="nav.home">Dashboard</a>
           <a href="page2.html" data-i18n="nav.guide">Academy</a>
           <a href="#join" class="btn-ghost" data-i18n="nav.join">Join</a>
           <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
@@ -54,21 +54,32 @@
                 <a class="btn primary" href="#join" data-i18n="hero.cta">Start Earning</a>
                 <a class="btn secondary" href="https://t.me/ZAYN1x" target="_blank" data-i18n="hero.contact">Direct Message Me</a>
               </div>
-              <p style="font-size:12px; color:#64748b; letter-spacing:0.5px" data-i18n="hero.caption">ACCEPTING NEW PARTNERS FOR Q4 2024</p>
+              <p style="font-size:12px; color:#64748b; letter-spacing:0.5px" data-i18n="hero.caption">Accepting new partners for Q4 2024</p>
             </div>
 
             <div class="calculator-wrap">
               <span class="calc-header" data-i18n="calc.title">Calculate Your Potential</span>
               
-              <label style="color:#fff; font-size:14px; font-weight:600" data-i18n="calc.label">Monthly FTDs</label>
-              <input type="range" min="10" max="500" value="50" class="range-slider" id="ftdRange">
+              <label style="color:#fff; font-size:14px; font-weight:600" data-i18n="calc.label">Monthly FTDs (First Time Depositors)</label>
+              <input 
+                type="range" 
+                min="10" 
+                max="500" 
+                value="50" 
+                class="range-slider" 
+                id="ftdRange"
+                aria-label="Monthly FTD slider"
+                aria-valuemin="10"
+                aria-valuemax="500"
+                aria-valuenow="50"
+              >
               <div style="text-align:right; font-weight:700; color:var(--brand); margin-bottom:20px" id="ftdValue">50 FTDs</div>
               
               <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 20px 0;">
               
               <span class="calc-res-label" data-i18n="calc.result">Est. Monthly Earnings</span>
               <span class="calc-result" id="earningsValue">$2,250</span>
-              <p style="font-size:11px; color:#64748b; margin-top:8px" data-i18n="calc.sub">Based on avg $45 player value & 35% RevShare</p>
+              <p style="font-size:11px; color:#64748b; margin-top:8px" data-i18n="calc.sub">Based on average $45 player value & 35% RevShare</p>
             </div>
           </div>
         </div>
@@ -113,7 +124,7 @@
 
   <div class="ticker-bar">
     <div class="ticker-content">
-      </div>
+    </div>
   </div>
 
 </body>
