@@ -26,6 +26,11 @@
       border: 1px solid var(--brand); border-radius: 24px; padding: 40px; text-align: center;
       box-shadow: 0 20px 50px rgba(43,101,255,0.15);
     }
+    
+    /* New: Gate Form */
+    .gate-form { display: none; margin-top: 20px; }
+    .gate-form input { width: 100%; padding: 10px; background: #334155; color: #fff; border: none; border-radius: 5px; margin-bottom: 10px; }
+    .gate-form button { padding: 10px; background: var(--brand); color: #fff; border: none; border-radius: 5px; width: 100%; }
   </style>
 </head>
 <body>
@@ -51,21 +56,33 @@
           <span class="res-num">01</span>
           <h3 class="res-title" data-i18n="page2.step1">01. The Hook</h3>
           <p class="res-desc" data-i18n="page2.step1d">Grab attention in the first 3 seconds. Download my "Top 10 Viral Hooks" PDF.</p>
-          <a href="#" class="download-link">↓ Download PDF</a>
+          <a href="#" class="download-link" onclick="showGateForm('hook')">↓ Download PDF</a>
+          <div id="gate-hook" class="gate-form">
+            <input type="text" placeholder="Telegram ID or Email" required>
+            <button onclick="submitGate('hook')">Unlock & Download</button>
+          </div>
         </div>
         
         <div class="resource-card">
           <span class="res-num">02</span>
           <h3 class="res-title" data-i18n="page2.step2">02. The Funnel</h3>
           <p class="res-desc" data-i18n="page2.step2d">Don't send direct to home. Use the "Registration Landing Page". Link in bio strategies.</p>
-          <a href="#" class="download-link">↓ View Strategy</a>
+          <a href="#" class="download-link" onclick="showGateForm('funnel')">↓ View Strategy</a>
+          <div id="gate-funnel" class="gate-form">
+            <input type="text" placeholder="Telegram ID or Email" required>
+            <button onclick="submitGate('funnel')">Unlock & View</button>
+          </div>
         </div>
         
         <div class="resource-card">
           <span class="res-num">03</span>
           <h3 class="res-title" data-i18n="page2.step3">03. The Retention</h3>
           <p class="res-desc" data-i18n="page2.step3d">How to use promo code "ZAYN1x" to lock players to your account forever.</p>
-          <a href="#" class="download-link">↓ Copy Script</a>
+          <a href="#" class="download-link" onclick="showGateForm('retention')">↓ Copy Script</a>
+          <div id="gate-retention" class="gate-form">
+            <input type="text" placeholder="Telegram ID or Email" required>
+            <button onclick="submitGate('retention')">Unlock & Copy</button>
+          </div>
         </div>
       </div>
 
@@ -77,6 +94,21 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // Gated Download Logic (Add to main.js if consolidating)
+    function showGateForm(id) {
+      document.getElementById(`gate-${id}`).style.display = 'block';
+    }
+    
+    function submitGate(id) {
+      const input = document.querySelector(`#gate-${id} input`);
+      if (input.value) {
+        alert(`Thanks! Unlocking for ${input.value}. (In real: Send to backend and reveal link)`);
+        // TODO: Reveal actual download link, e.g., window.location.href = 'path/to/pdf';
+      }
+    }
+  </script>
 
 </body>
 </html>
