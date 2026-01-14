@@ -16,35 +16,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 
-  // 2. PROFIT CALCULATOR LOGIC
+  // 2. UPGRADED PROFIT CALCULATOR/QUIZ LOGIC
   const slider = document.getElementById('ftdRange');
   const ftdDisplay = document.getElementById('ftdValue');
   const earningsDisplay = document.getElementById('earningsValue');
+  const quizResult = document.getElementById('quizResult');
+  const gateForm = document.getElementById('gateForm');
+  const quizStep1 = document.getElementById('quizStep1');
+  const quizStep2 = document.getElementById('quizStep2');
   
   if (slider && ftdDisplay && earningsDisplay) {
     const avgPlayerValue = 45; // $45 average value
     const revShare = 0.35; // 35%
     
-    function updateCalc() {
+    window.nextQuizStep = function() {
+      quizStep1.style.display = 'none';
+      quizStep2.style.display = 'block';
+    };
+    
+    window.calculateEarnings = function() {
       const ftds = parseInt(slider.value);
       ftdDisplay.textContent = ftds + ' FTDs';
-      
-      // Update aria-valuenow for accessibility
       slider.setAttribute('aria-valuenow', ftds);
-      
-      // Formula: FTDs * AvgValue * RevShare (Simple projection)
-      const total = Math.round(ftds * avgPlayerValue);
-      
-      // Format currency
+      const total = Math.round(ftds * avgPlayerValue * revShare);
       earningsDisplay.textContent = '$' + total.toLocaleString();
       
-      // Visual fill for slider
+      // Personalized tip based on quiz
+      const region = document.getElementById('audienceRegion').value;
+      quizResult.textContent = region === 'mena' ? 'Personalized tip: For MENA traffic, expect +10% boost!' : 'Personalized tip: Global traffic scales fast!';
+      quizResult.style.display = 'block';
+      
+      // Gate full details
+      gateForm.style.display = 'block';
+    };
+    
+    window.submitQuizLead = function() {
+      const contact = document.getElementById('quizContact').value;
+      if (contact) {
+        alert(`Thanks! I'll use ${contact} to send your full report and handle signup.`);
+        // TODO: Integrate real backend (e.g., fetch to Zapier webhook)
+      }
+    };
+    
+    slider.addEventListener('input', () => {
+      const ftds = parseInt(slider.value);
+      ftdDisplay.textContent = ftds + ' FTDs';
       const percentage = (ftds / slider.max) * 100;
       slider.style.background = `linear-gradient(90deg, #2b65ff ${percentage}%, #334155 ${percentage}%)`;
-    }
-    
-    slider.addEventListener('input', updateCalc);
-    updateCalc(); // init
+    });
+    // Initial setup (no auto-calc until quiz complete)
   }
 
   // 3. LIVE TICKER POPULATION (with i18n support)
@@ -63,13 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
       let html = '';
       const currentLang = window.i18n ? window.i18n.getCurrent() : 'en';
       
-      // Create enough items to scroll
       for(let i=0; i<12; i++) {
         const n = names[Math.floor(Math.random() * names.length)];
         const a = actions[Math.floor(Math.random() * actions.length)];
         const isPayout = a.type === 'payout';
         
-        // Use appropriate language
         const actionText = isPayout ? 
           `<span style="color:#4ade80">${currentLang === 'ar' ? 'تم تحويل دفعة' : 'received'} $${a.amt} (USDT)</span>` : 
           `<span style="color:#fff">${currentLang === 'ar' ? 'انضم للفريق' : 'joined the team'}</span>`;
@@ -81,18 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     populateTicker();
     
-    // Repopulate ticker when language changes
     if (window.i18n) {
       const langToggle = document.getElementById('langToggle');
       if (langToggle) {
         langToggle.addEventListener('click', () => {
-          setTimeout(populateTicker, 100); // Small delay to let i18n update
+          setTimeout(populateTicker, 100);
         });
       }
     }
   }
 
-  // 4. Modal Logic (15s delay or Exit Intent)
+  // 4. Modal Logic (Now Multi-Step)
   const modal = document.getElementById('onboardingModal');
   if (modal) {
     const seen = localStorage.getItem('zayn_modal_seen');
@@ -106,6 +123,30 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('zayn_modal_seen', 'true');
       });
     }
+    
+    const form = document.getElementById('onboardingForm');
+    const message = document.getElementById('formMessage');
+    window.nextStep = function(step) {
+      if (step === 1) {
+        const source = document.getElementById('trafficSource').value;
+        if (source) {
+          document.getElementById('step1').style.display = 'none';
+          document.getElementById('step2').style.display = 'block';
+        }
+      }
+    };
+    
+    form.addEventListener('submit', () => {
+      const telegram = document.getElementById('telegramId').value;
+      if (telegram) {
+        message.style.display = 'block';
+        // TODO: Send to backend (e.g., fetch('/lead', {method: 'POST', body: JSON.stringify({telegram})}))
+        setTimeout(() => {
+          modal.classList.remove('active');
+          localStorage.setItem('zayn_modal_seen', 'true');
+        }, 2000);
+      }
+    });
   }
 
   // 5. Counters
