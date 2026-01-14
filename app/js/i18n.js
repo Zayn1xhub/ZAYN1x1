@@ -48,7 +48,7 @@ window.i18n = (function(){
       'join.cta': 'Message Me Now',
 
       // Ticker
-      'ticker.payout': 'Payout sent',
+      'ticker.payout': 'received',
       'ticker.joined': 'joined the team',
       
       // Page 2
@@ -62,11 +62,7 @@ window.i18n = (function(){
       'page2.step3d': 'How to use promo code "ZAYN1x" to lock players to your account forever.',
       'page2.offer.title': 'Flash Bonus Offer',
       'page2.offer.desc': 'Use this creative for the Champions League Final. High conversion expected.',
-      'page2.download': 'Download Pack',
-      'page2.pdf.title': 'Program Guide (PDF)',
-'page2.pdf.desc': 'Full breakdown of CPA/RevShare tiers, prohibited traffic sources, and brand assets.',
-'page2.form.title': 'Official Application',
-'page2.form.desc': 'Submit your traffic sources for manual review. Approval typically takes 24 hours.',
+      'page2.download': 'Download Assets Pack'
     },
     ar: {
       'splash.title': 'ZAYN1x',
@@ -122,18 +118,14 @@ window.i18n = (function(){
       'page2.title': 'أكاديمية الشركاء',
       'page2.subtitle': 'مصادر ونصوص خاصة',
       'page2.step1': '01. الخطف (The Hook)',
-      'page2.step1d': 'اجذب الانتباه في أول 3 ثوانٍ. حمل ملف "أفضل 10 مقدمات فيرال".',
+      'page2.step1d': 'اجذب الانتباه في أول 3 ثوان. حمل ملف "أفضل 10 مقدمات فيرال".',
       'page2.step2': '02. القمع (The Funnel)',
       'page2.step2d': 'لا ترسل للرئيسية مباشرة. استخدم رابط صفحة التسجيل. استراتيجيات الرابط في البايو.',
       'page2.step3': '03. الحفاظ (Retention)',
       'page2.step3d': 'كيف تستخدم كود البرومو "ZAYN1x" لربط اللاعبين بحسابك للأبد.',
       'page2.offer.title': 'عرض بونص سريع',
       'page2.offer.desc': 'استخدم هذا الإعلان لنهائي دوري الأبطال. متوقع تحويل عالي جداً.',
-      'page2.download': 'تحميل الحزمة',
-'page2.pdf.title': 'دليل البرنامج (PDF)',
-'page2.pdf.desc': 'تفاصيل كاملة عن مستويات العمولات، مصادر الزيارات الممنوعة، وملفات الهوية البصرية.',
-'page2.form.title': 'نموذج الانضمام الرسمي',
-'page2.form.desc': 'قدم مصادر زياراتك للمراجعة اليدوية. الموافقة تستغرق عادة 24 ساعة.',
+      'page2.download': 'تحميل الحزمة'
     }
   };
 
@@ -152,5 +144,5 @@ window.i18n = (function(){
   }
   function setLangBtn(btn){ if (!btn) return; const s = btn.querySelector('.lang-label'); if(s) s.textContent = getCurrent() === 'en' ? 'AR' : 'EN'; }
   function init(){ apply(getCurrent()); document.querySelectorAll('.lang-btn').forEach(b => setLangBtn(b)); }
-  return { init, toggle, setLangBtn };
+  return { init, toggle, setLangBtn, getCurrent };
 })();
