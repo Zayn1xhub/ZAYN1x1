@@ -75,45 +75,26 @@
             <div class="calculator-wrap">
               <span class="calc-header" data-i18n="calc.title">Calculate Your Potential</span>
               
-              <!-- Upgraded to Quiz -->
-              <div id="quizStep1">
-                <label style="color:#fff; font-size:14px; font-weight:600">Audience Region?</label>
-                <select id="audienceRegion" class="range-slider" style="width:100%; padding:10px; background:#334155; color:#fff; border:none; border-radius:5px;">
-                  <option value="mena">MENA/Arabic</option>
-                  <option value="global">Global</option>
-                  <option value="other">Other</option>
-                </select>
-                <button type="button" style="margin-top:10px; padding:10px; background:var(--brand); color:#fff; border:none; border-radius:5px; width:100%;" onclick="nextQuizStep()">Next</button>
-              </div>
-              <div id="quizStep2" style="display:none;">
-                <label style="color:#fff; font-size:14px; font-weight:600" data-i18n="calc.label">Monthly FTDs (First Time Depositors)</label>
-                <input 
-                  type="range" 
-                  min="10" 
-                  max="500" 
-                  value="50" 
-                  class="range-slider" 
-                  id="ftdRange"
-                  aria-label="Monthly FTD slider"
-                  aria-valuemin="10"
-                  aria-valuemax="500"
-                  aria-valuenow="50"
-                >
-                <div style="text-align:right; font-weight:700; color:var(--brand); margin-bottom:20px" id="ftdValue">50 FTDs</div>
-                <button type="button" style="margin-top:10px; padding:10px; background:var(--brand); color:#fff; border:none; border-radius:5px; width:100%;" onclick="calculateEarnings()">Calculate</button>
-              </div>
+              <label style="color:#fff; font-size:14px; font-weight:600" data-i18n="calc.label">Monthly FTDs (First Time Depositors)</label>
+              <input 
+                type="range" 
+                min="10" 
+                max="500" 
+                value="50" 
+                class="range-slider" 
+                id="ftdRange"
+                aria-label="Monthly FTD slider"
+                aria-valuemin="10"
+                aria-valuemax="500"
+                aria-valuenow="50"
+              >
+              <div style="text-align:right; font-weight:700; color:var(--brand); margin-bottom:20px" id="ftdValue">50 FTDs</div>
               
               <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 20px 0;">
               
               <span class="calc-res-label" data-i18n="calc.result">Est. Monthly Earnings</span>
               <span class="calc-result" id="earningsValue">$2,250</span>
               <p style="font-size:11px; color:#64748b; margin-top:8px" data-i18n="calc.sub">Based on average $45 player value & 35% RevShare</p>
-              <div id="quizResult" style="display:none; margin-top:20px; color:#4ade80;">Personalized tip: For MENA traffic, expect +10% boost!</div>
-              <!-- Gate full results -->
-              <div id="gateForm" style="display:none; margin-top:20px;">
-                <input type="text" id="quizContact" placeholder="Telegram ID or Email" style="width:100%; padding:10px; background:#334155; color:#fff; border:none; border-radius:5px; margin-bottom:10px;">
-                <button type="button" style="padding:10px; background:var(--brand); color:#fff; border:none; border-radius:5px; width:100%;" onclick="submitQuizLead()">Get Full Report</button>
-              </div>
             </div>
           </div>
         </div>
@@ -142,6 +123,30 @@
           <div class="stat" data-count="35" data-suffix="%"><strong class="num">0%</strong><span data-i18n="stat.avgRev">Avg RevShare</span></div>
           <div class="stat" data-count="28" data-suffix="%"><strong class="num">0%</strong><span data-i18n="stat.ftd">Conversion Rate</span></div>
           <div class="stat" data-count="1400"><strong class="num">0</strong><span data-i18n="stat.partners">Active Partners</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New Testimonials Section -->
+    <section class="section">
+      <div class="wrap">
+        <h2>Testimonials from Partners</h2>
+        <div class="features-grid">  <!-- Reusing features-grid style for consistency -->
+          <article class="feature-card testimonial-card" onclick="toggleTestimonial(this)">
+            <h3>Ahmed S. - TikTok Creator</h3>
+            <p class="short">"ZAYN1x turned my traffic into real crypto payouts. Weekly USDT is a game-changer!"</p>
+            <p class="full" style="display:none;">"Before joining, I was stuck with slow programs. Now, with private creatives, I'm hitting $5k/mo. Highly recommend for serious affiliates."</p>
+          </article>
+          <article class="feature-card testimonial-card" onclick="toggleTestimonial(this)">
+            <h3>Sarah A. - SEO Expert</h3>
+            <p class="short">"VIP deals and fast support—best affiliate manager I've worked with."</p>
+            <p class="full" style="display:none;">"The academy resources helped me optimize funnels. Payouts are always on time, and the 35% RevShare is unbeatable."</p>
+          </article>
+          <article class="feature-card testimonial-card" onclick="toggleTestimonial(this)">
+            <h3>Ali M. - Reels Influencer</h3>
+            <p class="short">"From $0 to $10k/mo in 3 months. Thanks to ZAYN1x!"</p>
+            <p class="full" style="display:none;">"The promo codes and hooks are gold. If you're in betting affiliates, this is the partner you need."</p>
+          </article>
         </div>
       </div>
     </section>
