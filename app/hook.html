@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZAYN1x — Top 10 Viral Hooks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <style>
+    .hook-card {
+      background: rgba(30,41,59,0.4); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 24px; margin-bottom: 20px;
+      transition: 0.3s; position: relative;
+    }
+    .hook-card:hover { border-color: var(--brand); transform: translateX(5px); }
+    .hook-number {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 48px; font-weight: 900; color: rgba(43,101,255,0.1);
+    }
+    .hook-title {
+      color: var(--brand); font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .hook-text {
+      color: #fff; font-size: 18px; font-weight: 600;
+      margin-bottom: 12px; line-height: 1.4;
+    }
+    .hook-desc {
+      color: var(--muted); font-size: 14px; line-height: 1.6;
+    }
+    .example-tag {
+      display: inline-block; background: rgba(43,101,255,0.1);
+      color: var(--brand); padding: 4px 12px; border-radius: 20px;
+      font-size: 12px; margin-top: 12px; border: 1px solid rgba(43,101,255,0.2);
+    }
+    .download-section {
+      background: linear-gradient(135deg, rgba(43,101,255,0.15), rgba(15,23,42,0.8));
+      border: 1px solid var(--brand); border-radius: 20px;
+      padding: 32px; text-align: center; margin-top: 40px;
+    }
+    .copy-btn {
+      background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);
+      color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 13px;
+      cursor: pointer; transition: 0.2s; margin-left: 12px;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.2); }
+    .copy-btn.copied { background: #10b981; border-color: #10b981; }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="wrap" style="padding-top:40px; min-height:100vh; max-width: 900px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+      <a href="page2.html" class="btn secondary">← Back to Academy</a>
+      <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
+    </div>
+
+    <div class="card">
+      <h1 class="title" style="font-size: 38px; margin-bottom: 12px;">🎯 Top 10 Viral Hooks</h1>
+      <p class="lead" style="margin-bottom: 30px;">Use these proven first 3-second hooks to stop the scroll and convert viewers into players.</p>
+
+      <div class="hook-card">
+        <span class="hook-number">01</span>
+        <div class="hook-title">Pattern Interrupt</div>
+        <div class="hook-text">"Stop! Before you scroll... I just won $4,500 in 20 minutes."</div>
+        <div class="hook-desc">Opens with a command that breaks scrolling behavior. Creates curiosity with immediate proof of earnings.</div>
+        <span class="example-tag">💰 Money Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'Stop! Before you scroll... I just won $4,500 in 20 minutes.')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">02</span>
+        <div class="hook-title">The Warning Hook</div>
+        <div class="hook-text">"If you're in [Country], you NEED to see this before it's banned..."</div>
+        <div class="hook-desc">Creates FOMO and urgency. Implies exclusivity and limited time window. Replace [Country] with target region.</div>
+        <span class="example-tag">⚠️ FOMO Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'If you\'re in [Country], you NEED to see this before it\'s banned...')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">03</span>
+        <div class="hook-title">Social Proof</div>
+        <div class="hook-text">"My friend sent me this app... I thought it was a scam until I cashed out $1,200."</div>
+        <div class="hook-desc">Leverages trust through peer recommendation. Shows skepticism overcome by results. Relatable journey.</div>
+        <span class="example-tag">👥 Trust Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'My friend sent me this app... I thought it was a scam until I cashed out $1,200.')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">04</span>
+        <div class="hook-title">The Challenge</div>
+        <div class="hook-text">"I bet $50 that I could turn it into $500 in one night. Watch what happened..."</div>
+        <div class="hook-desc">Creates narrative tension. Viewer wants to see outcome. Works great with betting/gaming content.</div>
+        <span class="example-tag">🎲 Story Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'I bet $50 that I could turn it into $500 in one night. Watch what happened...')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">05</span>
+        <div class="hook-title">Secret Reveal</div>
+        <div class="hook-text">"No one's talking about this promo code that literally gives you FREE money..."</div>
+        <div class="hook-desc">Implies insider knowledge. "Free money" is powerful trigger. Perfect for promo code ZAYN1x integration.</div>
+        <span class="example-tag">🔐 Exclusive Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'No one\'s talking about this promo code that literally gives you FREE money...')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">06</span>
+        <div class="hook-title">Demonstration Hook</div>
+        <div class="hook-text">"Watch me deposit $100... and I'll show you exactly what I do next."</div>
+        <div class="hook-desc">Screen recording setup. Shows transparency. Educational angle builds trust and retention.</div>
+        <span class="example-tag">📱 Tutorial Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'Watch me deposit $100... and I\'ll show you exactly what I do next.')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">07</span>
+        <div class="hook-title">Comparison Hook</div>
+        <div class="hook-text">"I tested 5 betting apps. Only ONE paid me instantly. Here's proof..."</div>
+        <div class="hook-desc">Authority positioning. Builds credibility through comparison. Implies research was done for viewer.</div>
+        <span class="example-tag">📊 Authority Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'I tested 5 betting apps. Only ONE paid me instantly. Here\'s proof...')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">08</span>
+        <div class="hook-title">Mistake Reveal</div>
+        <div class="hook-text">"I made every mistake when I started. Here's what you should do instead..."</div>
+        <div class="hook-desc">Empathy hook. Positions you as experienced guide. Promises solution to avoid pain points.</div>
+        <span class="example-tag">💡 Value Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'I made every mistake when I started. Here\'s what you should do instead...')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">09</span>
+        <div class="hook-title">Direct Result Hook</div>
+        <div class="hook-text">"This is my withdrawal screen. $2,340 in 3 days. I'll show you how."</div>
+        <div class="hook-desc">Visual proof upfront. Numbers create curiosity. "I'll show you how" promises value delivery.</div>
+        <span class="example-tag">💸 Proof Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'This is my withdrawal screen. $2,340 in 3 days. I\'ll show you how.')">Copy</button>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-number">10</span>
+        <div class="hook-title">Entertainment + Value</div>
+        <div class="hook-text">"POV: You finally found an app that actually pays out (not clickbait)..."</div>
+        <div class="hook-desc">Trendy POV format. Addresses viewer skepticism directly. Casual tone lowers resistance.</div>
+        <span class="example-tag">😎 Trend Hook</span>
+        <button class="copy-btn" onclick="copyHook(this, 'POV: You finally found an app that actually pays out (not clickbait)...')">Copy</button>
+      </div>
+
+      <div class="download-section">
+        <h3 style="color:#fff; margin-bottom:12px; font-size: 22px;">📥 Want the Full PDF Version?</h3>
+        <p style="color:var(--muted); margin-bottom: 20px;">Includes hook formulas, A/B test results, and platform-specific variations.</p>
+        <button class="btn primary" onclick="downloadPDF()">Download Complete Guide (PDF)</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyHook(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    function downloadPDF() {
+      alert('PDF generation feature coming soon! For now, bookmark this page or screenshot the hooks you need.');
+      // In production, you would trigger actual PDF download here
+    }
+  </script>
+</body>
+</html>
