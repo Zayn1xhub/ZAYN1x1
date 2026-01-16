@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZAYN1x — Champions League Assets Pack</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <style>
+    .asset-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; margin-top: 30px;
+    }
+    .asset-card {
+      background: rgba(30,41,59,0.4); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 20px; transition: 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .asset-card:hover {
+      border-color: var(--brand); transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(43,101,255,0.2);
+    }
+    .asset-preview {
+      width: 100%; aspect-ratio: 16/9; background: #111827;
+      border-radius: 12px; margin-bottom: 16px; display: flex;
+      align-items: center; justify-content: center; font-size: 48px;
+      border: 1px solid var(--glass-border); position: relative;
+      overflow: hidden;
+    }
+    .asset-preview::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(43,101,255,0.1), transparent);
+    }
+    .asset-title {
+      color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 8px;
+    }
+    .asset-specs {
+      color: var(--muted); font-size: 13px; margin-bottom: 16px;
+    }
+    .asset-specs span {
+      display: inline-block; background: rgba(43,101,255,0.1);
+      padding: 4px 8px; border-radius: 6px; margin-right: 8px; margin-bottom: 4px;
+      font-size: 11px; border: 1px solid rgba(43,101,255,0.2);
+    }
+    .download-btn {
+      width: 100%; background: var(--brand); color: #fff;
+      border: none; padding: 12px; border-radius: 10px;
+      font-weight: 600; cursor: pointer; transition: 0.2s;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 20px rgba(43,101,255,0.4);
+    }
+    .pack-header {
+      background: linear-gradient(135deg, rgba(43,101,255,0.2), rgba(15,23,42,0.8));
+      border: 1px solid var(--brand); border-radius: 20px;
+      padding: 40px; text-align: center; margin-bottom: 40px;
+    }
+    .limited-badge {
+      background: #ef4444; color: #fff; padding: 6px 16px;
+      border-radius: 20px; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; display: inline-block; margin-bottom: 16px;
+    }
+    .usage-guide {
+      background: rgba(16,185,129,0.1); border: 1px solid #10b981;
+      border-radius: 16px; padding: 24px; margin-top: 40px;
+    }
+    .usage-guide h3 {
+      color: #10b981; margin: 0 0 16px; font-size: 20px;
+    }
+    .usage-item {
+      display: flex; align-items: start; gap: 12px; margin-bottom: 16px;
+    }
+    .usage-number {
+      background: rgba(16,185,129,0.2); color: #10b981;
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px; flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="wrap" style="padding-top:40px; min-height:100vh;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+      <a href="page2.html" class="btn secondary">← Back to Academy</a>
+      <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
+    </div>
+
+    <div class="card">
+      <div class="pack-header">
+        <span class="limited-badge">🔥 Limited Time</span>
+        <h1 style="color: #fff; font-size: 36px; margin: 0 0 12px;">Champions League Final 2024 Assets Pack</h1>
+        <p style="color: var(--muted); max-width: 600px; margin: 0 auto;">
+          High-converting creatives optimized for Champions League traffic spike. Expected 40%+ CTR during match days.
+        </p>
+      </div>
+
+      <h2 style="color: #fff; font-size: 24px; margin-bottom: 20px;">📦 What's Included</h2>
+
+      <div class="asset-grid">
+        <div class="asset-card">
+          <div class="asset-preview">⚽</div>
+          <div class="asset-title">Vertical Video Template</div>
+          <div class="asset-specs">
+            <span>9:16</span>
+            <span>1080x1920</span>
+            <span>MP4</span>
+          </div>
+          <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+            15-second hook template with Champions League branding. Editable in CapCut.
+          </p>
+          <button class="download-btn" onclick="downloadAsset('video-template')">Download Video</button>
+        </div>
+
+        <div class="asset-card">
+          <div class="asset-preview">📱</div>
+          <div class="asset-title">Instagram Story Pack</div>
+          <div class="asset-specs">
+            <span>9:16</span>
+            <span>1080x1920</span>
+            <span>PSD + PNG</span>
+          </div>
+          <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+            5 pre-designed story templates. Includes swipe-up graphics and promo code displays.
+          </p>
+          <button class="download-btn" onclick="downloadAsset('story-pack')">Download Stories</button>
+        </div>
+
+        <div class="asset-card">
+          <div class="asset-preview">🎯</div>
+          <div class="asset-title">TikTok Captions Pack</div>
+          <div class="asset-specs">
+            <span>TXT</span>
+            <span>15 Scripts</span>
+          </div>
+          <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+            15 pre-written captions with hashtags. Copy-paste ready for Champions League content.
+          </p>
+          <button class="download-btn" onclick="downloadAsset('captions')">Download Captions</button>
+        </div>
+
+        <div class="asset-card">
+          <div class="asset-preview">🎨</div>
+          <div class="asset-title">Thumbnail Graphics</div>
+          <div class="asset-specs">
+            <span>16:9</span>
+            <span>1920x1080</span>
+            <span>PNG</span>
+          </div>
+          <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+            YouTube thumbnail templates. High-contrast designs for max click-through.
+          </p>
+          <button class="download-btn" onclick="downloadAsset('thumbnails')">Download Graphics</button>
+        </div>
+
+        <div class="asset-card">
+          <div class="asset-preview">💬</div>
+          <div class="asset-title">Bonus: Hook Scripts</div>
+          <div class="asset-specs">
+            <span>PDF</span>
+            <span>10 Hooks</span>
+          </div>
+          <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+            10 Champions League-specific hooks. Tested on 50k+ impressions.
+          </p>
+          <button class="download-btn" onclick="downloadAsset('hooks')">Download PDF</button>
+        </div>
+
+        <div class="asset-card">
+          <div class="asset-preview">🔗</div>
+          <div class="asset-title">Landing Page HTML</div>
+          <div class="asset-specs">
+            <span>HTML</span>
+            <span>Mobile-First</span>
+          </div>
+          <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+            Champions League themed landing page. Pre-configured with ZAYN1x promo code.
+          </p>
+          <button class="download-btn" onclick="downloadAsset('landing-page')">Download HTML</button>
+        </div>
+      </div>
+
+      <div class="usage-guide">
+        <h3>📋 How to Use These Assets</h3>
+        
+        <div class="usage-item">
+          <div class="usage-number">1</div>
+          <div>
+            <strong style="color: #fff; display: block; margin-bottom: 4px;">Download All Assets</strong>
+            <p style="color: var(--muted); margin: 0; font-size: 14px;">
+              Click each download button above. Assets are compressed in a ZIP file. Extract to your device.
+            </p>
+          </div>
+        </div>
+
+        <div class="usage-item">
+          <div class="usage-number">2</div>
+          <div>
+            <strong style="color: #fff; display: block; margin-bottom: 4px;">Customize for Your Brand</strong>
+            <p style="color: var(--muted); margin: 0; font-size: 14px;">
+              Replace placeholder text with your username. Add your voice-over to video templates. Keep ZAYN1x promo code visible.
+            </p>
+          </div>
+        </div>
+
+        <div class="usage-item">
+          <div class="usage-number">3</div>
+          <div>
+            <strong style="color: #fff; display: block; margin-bottom: 4px;">Post During Peak Times</strong>
+            <p style="color: var(--muted); margin: 0; font-size: 14px;">
+              Best times: 2 hours before kickoff, halftime, immediately after final whistle. Use TikTok scheduling feature.
+            </p>
+          </div>
+        </div>
+
+        <div class="usage-item">
+          <div class="usage-number">4</div>
+          <div>
+            <strong style="color: #fff; display: block; margin-bottom: 4px;">Track Performance</strong>
+            <p style="color: var(--muted); margin: 0; font-size: 14px;">
+              Use UTM parameters in your bio link (utm_campaign=ucl_final). Monitor which creatives drive most FTDs.
+            </p>
+          </div>
+        </div>
+
+        <div class="usage-item">
+          <div class="usage-number">5</div>
+          <div>
+            <strong style="color: #fff; display: block; margin-bottom: 4px;">Scale What Works</strong>
+            <p style="color: var(--muted); margin: 0; font-size: 14px;">
+              Double down on winning creatives. Create variations (different hooks, same template). Test consistently.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: rgba(239,68,68,0.1); border: 1px solid #ef4444; border-radius: 16px; padding: 24px; margin-top: 30px;">
+        <h3 style="color: #ef4444; margin: 0 0 12px; font-size: 18px;">⚠️ Important Notes</h3>
+        <ul style="color: var(--muted); margin: 0; padding-left: 20px; line-height: 1.8;">
+          <li>These assets are for personal use only. Do not resell or redistribute.</li>
+          <li>Always include "18+ Play Responsibly" disclaimer in your content.</li>
+          <li>Check your local laws regarding betting promotion before posting.</li>
+          <li>Assets expire after Champions League Final. Download within 7 days.</li>
+        </ul>
+      </div>
+
+      <div style="text-align: center; margin-top: 40px; padding: 40px; background: rgba(43,101,255,0.1); border-radius: 20px; border: 1px solid var(--brand);">
+        <h3 style="color: #fff; margin-bottom: 12px;">Need Help with Asset Customization?</h3>
+        <p style="color: var(--muted); margin-bottom: 20px;">I offer 1-on-1 content review sessions for my top partners.</p>
+        <a href="https://t.me/ZAYN1x" target="_blank" class="btn primary">Book Review Session</a>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <button class="btn primary" style="font-size: 18px; padding: 18px 40px;" onclick="downloadAll()">
+          📥 Download Complete Pack (ZIP)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function downloadAsset(assetName) {
+      // Simulate download
+      alert(`Downloading ${assetName}...\n\nNote: This is a demo. In production, this would trigger actual file download.`);
+      
+      // In production, you would:
+      // window.location.href = `/assets/${assetName}.zip`;
+    }
+
+    function downloadAll() {
+      alert('Downloading complete Champions League pack...\n\nSize: ~45MB\nIncludes: All 6 asset categories\n\n(Demo mode - no actual download)');
+      
+      // In production:
+      // window.location.href = '/assets/champions-league-pack-2024.zip';
+    }
+  </script>
+</body>
+</html>
