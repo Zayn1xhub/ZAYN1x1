@@ -16,58 +16,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
   }
 
-  // 2. UPGRADED PROFIT CALCULATOR/QUIZ LOGIC
+  // 2. ORIGINAL PROFIT CALCULATOR LOGIC (Reverted)
   const slider = document.getElementById('ftdRange');
   const ftdDisplay = document.getElementById('ftdValue');
   const earningsDisplay = document.getElementById('earningsValue');
-  const quizResult = document.getElementById('quizResult');
-  const gateForm = document.getElementById('gateForm');
-  const quizStep1 = document.getElementById('quizStep1');
-  const quizStep2 = document.getElementById('quizStep2');
   
   if (slider && ftdDisplay && earningsDisplay) {
     const avgPlayerValue = 45; // $45 average value
     const revShare = 0.35; // 35%
     
-    window.nextQuizStep = function() {
-      quizStep1.style.display = 'none';
-      quizStep2.style.display = 'block';
-    };
-    
-    window.calculateEarnings = function() {
+    function updateCalc() {
       const ftds = parseInt(slider.value);
       ftdDisplay.textContent = ftds + ' FTDs';
+      
+      // Update aria-valuenow for accessibility
       slider.setAttribute('aria-valuenow', ftds);
+      
+      // Formula: FTDs * AvgValue * RevShare (Simple projection)
       const total = Math.round(ftds * avgPlayerValue * revShare);
+      
+      // Format currency
       earningsDisplay.textContent = '$' + total.toLocaleString();
       
-      // Personalized tip based on quiz
-      const region = document.getElementById('audienceRegion').value;
-      quizResult.textContent = region === 'mena' ? 'Personalized tip: For MENA traffic, expect +10% boost!' : 'Personalized tip: Global traffic scales fast!';
-      quizResult.style.display = 'block';
-      
-      // Gate full details
-      gateForm.style.display = 'block';
-    };
-    
-    window.submitQuizLead = function() {
-      const contact = document.getElementById('quizContact').value;
-      if (contact) {
-        alert(`Thanks! I'll use ${contact} to send your full report and handle signup.`);
-        // TODO: Integrate real backend (e.g., fetch to Zapier webhook)
-      }
-    };
-    
-    slider.addEventListener('input', () => {
-      const ftds = parseInt(slider.value);
-      ftdDisplay.textContent = ftds + ' FTDs';
+      // Visual fill for slider
       const percentage = (ftds / slider.max) * 100;
       slider.style.background = `linear-gradient(90deg, #2b65ff ${percentage}%, #334155 ${percentage}%)`;
-    });
-    // Initial setup (no auto-calc until quiz complete)
+    }
+    
+    slider.addEventListener('input', updateCalc);
+    updateCalc(); // init
   }
 
-  // 3. LIVE TICKER POPULATION (with i18n support)
+  // 3. LIVE TICKER POPULATION (with i18n support) - Added Click Interactivity
   const ticker = document.querySelector('.ticker-content');
   if(ticker) {
     const names = ['Ahmed S.', 'CryptoKing', 'BetPro_22', 'Sarah_Aff', 'WinTeam', 'Ali_M'];
@@ -83,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let html = '';
       const currentLang = window.i18n ? window.i18n.getCurrent() : 'en';
       
+      // Create enough items to scroll
       for(let i=0; i<12; i++) {
         const n = names[Math.floor(Math.random() * names.length)];
         const a = actions[Math.floor(Math.random() * actions.length)];
@@ -92,24 +73,32 @@ document.addEventListener('DOMContentLoaded', () => {
           `<span style="color:#4ade80">${currentLang === 'ar' ? 'تم تحويل دفعة' : 'received'} $${a.amt} (USDT)</span>` : 
           `<span style="color:#fff">${currentLang === 'ar' ? 'انضم للفريق' : 'joined the team'}</span>`;
         
-        html += `<div class="ticker-item"><strong>${n}</strong> ${actionText}</div>`;
+        html += `<div class="ticker-item" onclick="showTickerPopup('${n}', '${a.type}', ${a.amt})"><strong>${n}</strong> ${actionText}</div>`;
       }
       ticker.innerHTML = html;
     }
     
     populateTicker();
     
+    // Repopulate ticker when language changes
     if (window.i18n) {
       const langToggle = document.getElementById('langToggle');
       if (langToggle) {
         langToggle.addEventListener('click', () => {
-          setTimeout(populateTicker, 100);
+          setTimeout(populateTicker, 100); // Small delay to let i18n update
         });
       }
     }
   }
 
-  // 4. Modal Logic (Now Multi-Step)
+  // New: Ticker Popup Function
+  window.showTickerPopup = function(name, type, amt) {
+    const message = type === 'payout' ? `${name} just received $${amt} USDT! Ready to join?` : `${name} joined the team! You next?`;
+    alert(message + ' Click OK to message me on Telegram.');
+    // TODO: Replace alert with modal or direct Telegram link: window.open('https://t.me/ZAYN1x');
+  };
+
+  // 4. Modal Logic (Multi-Step)
   const modal = document.getElementById('onboardingModal');
   if (modal) {
     const seen = localStorage.getItem('zayn_modal_seen');
@@ -149,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Counters
+  // 5. Counters - Added Hover Tooltips for Interactivity
   const stats = document.querySelectorAll('.stat');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -166,7 +155,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-  stats.forEach(s => observer.observe(s));
+  stats.forEach(s => {
+    observer.observe(s);
+    // Hover tooltip
+    s.addEventListener('mouseenter', () => {
+      const tooltip = document.createElement('div');
+      tooltip.style.position = 'absolute';
+      tooltip.style.background = '#334155';
+      tooltip.style.padding = '8px';
+      tooltip.style.borderRadius = '5px';
+      tooltip.style.color = '#fff';
+      tooltip.textContent = 'Based on real partner data—join to see yours!';
+      s.appendChild(tooltip);
+    });
+    s.addEventListener('mouseleave', () => {
+      const tooltip = s.querySelector('div');
+      if (tooltip) tooltip.remove();
+    });
+  });
+
+  // New: Testimonial Toggle Function
+  window.toggleTestimonial = function(card) {
+    const short = card.querySelector('.short');
+    const full = card.querySelector('.full');
+    if (short.style.display === 'none') {
+      short.style.display = 'block';
+      full.style.display = 'none';
+    } else {
+      short.style.display = 'none';
+      full.style.display = 'block';
+    }
+  };
 
   // 6. Language Toggle
   const langToggle = document.getElementById('langToggle');
