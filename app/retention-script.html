@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZAYN1x — Retention Script</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/i18n.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <style>
+    .script-card {
+      background: rgba(30,41,59,0.4); border: 1px solid var(--glass-border);
+      border-radius: 16px; padding: 28px; margin-bottom: 20px;
+      position: relative;
+    }
+    .script-type {
+      background: rgba(43,101,255,0.2); color: var(--brand);
+      padding: 4px 12px; border-radius: 20px; font-size: 12px;
+      font-weight: 700; display: inline-block; margin-bottom: 16px;
+      border: 1px solid var(--brand);
+    }
+    .script-text {
+      background: #111827; border: 1px solid var(--glass-border);
+      border-radius: 12px; padding: 20px; color: #fff;
+      font-size: 15px; line-height: 1.8; position: relative;
+    }
+    .script-text em {
+      color: #4ade80; font-style: normal; font-weight: 600;
+    }
+    .script-text strong {
+      color: var(--brand); font-weight: 700;
+    }
+    .copy-script-btn {
+      position: absolute; top: 16px; right: 16px;
+      background: rgba(43,101,255,0.2); border: 1px solid var(--brand);
+      color: var(--brand); padding: 6px 14px; border-radius: 8px;
+      font-size: 12px; cursor: pointer; transition: 0.2s; font-weight: 600;
+    }
+    .copy-script-btn:hover { background: var(--brand); color: #fff; }
+    .copy-script-btn.copied { background: #10b981; border-color: #10b981; color: #fff; }
+    .why-box {
+      background: rgba(16,185,129,0.1); border-left: 3px solid #10b981;
+      padding: 16px; margin-top: 12px; border-radius: 8px;
+    }
+    .why-box strong { color: #10b981; }
+    .breakdown-item {
+      background: rgba(15,23,42,0.8); padding: 16px; border-radius: 12px;
+      margin-bottom: 12px; border: 1px solid var(--glass-border);
+    }
+    .breakdown-label {
+      color: var(--brand); font-weight: 700; font-size: 13px;
+      text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
+    }
+    .promo-code-display {
+      background: linear-gradient(135deg, #2b65ff, #4f46e5);
+      border-radius: 16px; padding: 32px; text-align: center;
+      margin: 24px 0; border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 10px 40px rgba(43,101,255,0.3);
+    }
+    .promo-code-display h3 {
+      color: #fff; margin: 0 0 8px; font-size: 16px;
+      text-transform: uppercase; letter-spacing: 2px; opacity: 0.9;
+    }
+    .promo-code-text {
+      font-size: 48px; font-weight: 900; color: #fff;
+      letter-spacing: 4px; margin: 12px 0; text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .bonus-tag {
+      background: rgba(255,255,255,0.2); color: #fff;
+      padding: 8px 16px; border-radius: 20px; font-size: 14px;
+      font-weight: 600; display: inline-block; margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+
+  <div class="wrap" style="padding-top:40px; min-height:100vh; max-width: 1000px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+      <a href="page2.html" class="btn secondary">← Back to Academy</a>
+      <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
+    </div>
+
+    <div class="card">
+      <h1 class="title" style="font-size: 38px; margin-bottom: 12px;">🔐 Lifetime Retention Strategy</h1>
+      <p class="lead" style="margin-bottom: 30px;">How to use promo code "ZAYN1x" to lock players to your account forever and maximize lifetime value.</p>
+
+      <div class="promo-code-display">
+        <h3>Your Exclusive Promo Code</h3>
+        <div class="promo-code-text">ZAYN1x</div>
+        <div class="bonus-tag">💰 Unlocks Up to $100 Welcome Bonus</div>
+      </div>
+
+      <div style="background: rgba(239,68,68,0.1); border: 1px solid #ef4444; border-radius: 16px; padding: 24px; margin-bottom: 30px;">
+        <h3 style="color: #ef4444; margin: 0 0 12px; font-size: 18px;">⚠️ Why This Matters</h3>
+        <p style="color: var(--muted); margin: 0; line-height: 1.7;">
+          When a user registers with your promo code <strong style="color: #fff;">ZAYN1x</strong>, they are <strong style="color: #fff;">permanently attributed to your account</strong>. 
+          This means you earn commissions on their activity <strong style="color: #fff;">for life</strong>—not just their first deposit. 
+          Without the promo code, you risk losing attribution.
+        </p>
+      </div>
+
+      <h2 style="color: #fff; font-size: 28px; margin-bottom: 20px;">📱 Video Scripts by Platform</h2>
+
+      <div class="script-card">
+        <span class="script-type">TikTok / Reels (15-30 sec)</span>
+        <div class="script-text">
+          <button class="copy-script-btn" onclick="copyScript(this, 'tiktok')">Copy Script</button>
+          <div id="tiktok-script">
+            <strong>[Hook - First 3 seconds]</strong><br>
+            "Listen up! If you're gonna sign up anyway, do NOT skip this step..."<br><br>
+            
+            <strong>[Problem - 3-7 seconds]</strong><br>
+            "Most people register without a promo code and miss out on the <em>$100 bonus</em>. Huge mistake."<br><br>
+            
+            <strong>[Solution - 7-15 seconds]</strong><br>
+            "When you sign up, enter promo code <em>ZAYN1x</em>. That's Z-A-Y-N-1-X. You'll get instant bonus cash."<br><br>
+            
+            <strong>[CTA - Final 5 seconds]</strong><br>
+            "Link in bio. Code is ZAYN1x. Don't forget it. Let's go!"
+          </div>
+        </div>
+        <div class="why-box">
+          <strong>Why This Works:</strong> Short, direct, and creates FOMO. Repeating the code twice ensures recall.
+        </div>
+      </div>
+
+      <div class="script-card">
+        <span class="script-type">YouTube Shorts / TikTok Long (30-60 sec)</span>
+        <div class="script-text">
+          <button class="copy-script-btn" onclick="copyScript(this, 'youtube')">Copy Script</button>
+          <div id="youtube-script">
+            <strong>[Hook]</strong><br>
+            "Before you register on any betting app, watch this. I'm about to save you money."<br><br>
+            
+            <strong>[Story]</strong><br>
+            "When I first started, I signed up without a promo code. I left <em>$100 on the table</em>. Don't be like me."<br><br>
+            
+            <strong>[Education]</strong><br>
+            "Here's what you do: Go to the registration page—link is in my bio. Where it says 'Promo Code,' type <em>ZAYN1x</em>. That's capital Z-A-Y-N, then 1-X."<br><br>
+            
+            <strong>[Proof]</strong><br>
+            "Look at my screen. [Show bonus balance]. This is the bonus you get instantly. It's free money to start with."<br><br>
+            
+            <strong>[CTA]</strong><br>
+            "Link in bio. Code: ZAYN1x. Screenshot this if you need to. Go get your bonus."
+          </div>
+        </div>
+        <div class="why-box">
+          <strong>Why This Works:</strong> Personal story builds trust. Visual proof (screenshot) increases credibility. Clear step-by-step.
+        </div>
+      </div>
+
+      <div class="script-card">
+        <span class="script-type">Instagram Story / Snap (Swipe-Up)</span>
+        <div class="script-text">
+          <button class="copy-script-btn" onclick="copyScript(this, 'story')">Copy Script</button>
+          <div id="story-script">
+            <strong>[Slide 1 - Text Overlay on Winning Screenshot]</strong><br>
+            "Just cashed out $800 💰"<br>
+            "Swipe up for my secret"<br><br>
+            
+            <strong>[Slide 2 - Direct to Camera]</strong><br>
+            "You need to use promo code <em>ZAYN1x</em> when you register. That's how you unlock the max bonus."<br><br>
+            
+            <strong>[Slide 3 - Code Display]</strong><br>
+            [Full screen text]: <em>ZAYN1x</em><br>
+            "Screenshot this!"<br>
+            "Link in bio 👆"
+          </div>
+        </div>
+        <div class="why-box">
+          <strong>Why This Works:</strong> Multi-slide creates engagement. Visual code display = easy to remember. "Screenshot this" drives action.
+        </div>
+      </div>
+
+      <h2 style="color: #fff; font-size: 28px; margin: 40px 0 20px;">🎯 Script Breakdown: The Psychology</h2>
+
+      <div class="breakdown-item">
+        <div class="breakdown-label">1. Pattern Interrupt Hook</div>
+        <p style="color: var(--muted); margin: 0;">
+          "Listen up!" / "Before you scroll..." / "Stop!" → Breaks scrolling behavior. You have 1.5 seconds to grab attention.
+        </p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-label">2. Problem Awareness</div>
+        <p style="color: var(--muted); margin: 0;">
+          "Most people miss this..." → Creates fear of missing out. Viewer thinks "Wait, am I missing something?"
+        </p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-label">3. Simple Solution</div>
+        <p style="color: var(--muted); margin: 0;">
+          "Just enter ZAYN1x..." → One clear action. No confusion. Promo codes are familiar (low friction).
+        </p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-label">4. Value Anchor</div>
+        <p style="color: var(--muted); margin: 0;">
+          "$100 bonus" → Specific number > vague "bonus". Money is the strongest motivator.
+        </p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-label">5. Repetition for Recall</div>
+        <p style="color: var(--muted); margin: 0;">
+          Say the code at least twice. Spell it out once. Visual display (text overlay) = 3x retention.
+        </p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-label">6. Clear CTA</div>
+        <p style="color: var(--muted); margin: 0;">
+          "Link in bio" → Everyone knows this pattern. "Screenshot this" → Micro-commitment that increases conversion.
+        </p>
+      </div>
+
+      <div style="background: rgba(43,101,255,0.1); border: 1px solid var(--brand); border-radius: 20px; padding: 32px; margin-top: 40px; text-align: center;">
+        <h3 style="color: #fff; margin-bottom: 12px; font-size: 22px;">🎬 Need Video Examples?</h3>
+        <p style="color: var(--muted); margin-bottom: 20px;">I have a private library of winning video scripts and templates.</p>
+        <a href="https://t.me/ZAYN1x" target="_blank" class="btn primary">Request Video Templates</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyScript(btn, scriptId) {
+      const scriptElement = document.getElementById(scriptId + '-script');
+      const text = scriptElement.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
