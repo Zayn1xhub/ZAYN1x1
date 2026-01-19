@@ -8,6 +8,7 @@ window.i18n = (function(){
       'splash.enter': 'Access Dashboard',
       'nav.home': 'Dashboard',
       'nav.guide': 'Academy',
+      'nav.partners': 'Partners Hub',
       'nav.join': 'Join',
       'hero.title': 'I Turn Traffic Into Crypto.',
       'hero.lead': 'Stop sending traffic to dead offers. I provide the highest converting funnels, private creatives, and weekly USDT payouts.',
