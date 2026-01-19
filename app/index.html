@@ -15,25 +15,10 @@
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <h2>Join My Private Circle</h2>
       <p style="color:#94a3b8; margin-bottom:20px">Get the exact funnels my top partners are using to make $10k/mo.</p>
-      <form id="onboardingForm" onsubmit="event.preventDefault();">
-        <!-- Step 1: Quick Question -->
-        <div id="step1" class="modal-step">
-          <label style="color:#fff; font-size:14px; font-weight:600">What's your main traffic source?</label>
-          <select id="trafficSource" class="modal-input" required>
-            <option value="">Select...</option>
-            <option value="tiktok">TikTok/Reels</option>
-            <option value="seo">SEO/Website</option>
-            <option value="other">Other</option>
-          </select>
-          <button type="button" class="modal-btn" onclick="nextStep(1)">Next</button>
-        </div>
-        <!-- Step 2: Contact Info -->
-        <div id="step2" class="modal-step" style="display:none;">
-          <input type="text" id="telegramId" class="modal-input" placeholder="Telegram ID or Email" required>
-          <button type="submit" class="modal-btn">Unlock Access & Register</button>
-        </div>
+      <form onsubmit="event.preventDefault(); alert('Welcome to the team.'); document.getElementById('onboardingModal').classList.remove('active');">
+        <input type="email" class="modal-input" placeholder="Telegram ID or Email" required>
+        <button type="submit" class="modal-btn">Unlock Access</button>
       </form>
-      <p id="formMessage" style="color:#4ade80; margin-top:10px; display:none;">Thanks! I'll DM you for signup.</p>
     </div>
   </div>
 
@@ -50,6 +35,7 @@
         <nav class="nav">
           <a href="index.html" data-i18n="nav.home">Dashboard</a>
           <a href="page2.html" data-i18n="nav.guide">Academy</a>
+          <a href="partners-hub.html" data-i18n="nav.partners">Partners Hub</a>
           <a href="#join" class="btn-ghost" data-i18n="nav.join">Join</a>
           <button id="langToggle" class="lang-btn"><span class="lang-label">AR</span></button>
         </nav>
@@ -123,30 +109,6 @@
           <div class="stat" data-count="35" data-suffix="%"><strong class="num">0%</strong><span data-i18n="stat.avgRev">Avg RevShare</span></div>
           <div class="stat" data-count="28" data-suffix="%"><strong class="num">0%</strong><span data-i18n="stat.ftd">Conversion Rate</span></div>
           <div class="stat" data-count="1400"><strong class="num">0</strong><span data-i18n="stat.partners">Active Partners</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- New Testimonials Section -->
-    <section class="section">
-      <div class="wrap">
-        <h2>Testimonials from Partners</h2>
-        <div class="features-grid">  <!-- Reusing features-grid style for consistency -->
-          <article class="feature-card testimonial-card" onclick="toggleTestimonial(this)">
-            <h3>Ahmed S. - TikTok Creator</h3>
-            <p class="short">"ZAYN1x turned my traffic into real crypto payouts. Weekly USDT is a game-changer!"</p>
-            <p class="full" style="display:none;">"Before joining, I was stuck with slow programs. Now, with private creatives, I'm hitting $5k/mo. Highly recommend for serious affiliates."</p>
-          </article>
-          <article class="feature-card testimonial-card" onclick="toggleTestimonial(this)">
-            <h3>Sarah A. - SEO Expert</h3>
-            <p class="short">"VIP deals and fast support—best affiliate manager I've worked with."</p>
-            <p class="full" style="display:none;">"The academy resources helped me optimize funnels. Payouts are always on time, and the 35% RevShare is unbeatable."</p>
-          </article>
-          <article class="feature-card testimonial-card" onclick="toggleTestimonial(this)">
-            <h3>Ali M. - Reels Influencer</h3>
-            <p class="short">"From $0 to $10k/mo in 3 months. Thanks to ZAYN1x!"</p>
-            <p class="full" style="display:none;">"The promo codes and hooks are gold. If you're in betting affiliates, this is the partner you need."</p>
-          </article>
         </div>
       </div>
     </section>
