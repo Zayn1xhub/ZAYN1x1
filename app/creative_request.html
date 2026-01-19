@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>ZAYN1x — Request Creative</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  :root { 
+    --brand: #2b65ff; 
+    --bg-dark: #020a18; 
+    --glass: rgba(255, 255, 255, 0.02); 
+    --border: rgba(255, 255, 255, 0.08); 
+  }
+
+  .page-bg {
+    position: fixed; inset: 0; z-index: 0;
+    background: radial-gradient(circle at 50% 50%, #04142d 0%, #020a18 100%);
+    overflow: hidden;
+  }
+
+  .blob { 
+    position: absolute; width: 400px; height: 400px; 
+    filter: blur(120px); border-radius: 50%; opacity: 0.1;
+    animation: pulse 12s infinite alternate; 
+  }
+  @keyframes pulse { 
+    from { transform: scale(1); } 
+    to { transform: scale(1.15); } 
+  }
+
+  .float-char {
+    position: absolute; color: rgba(255,255,255,0.05); font-weight: 900;
+    animation: infiniteFloat linear infinite;
+  }
+  @keyframes infiniteFloat { 
+    from { transform: translateY(110vh) rotate(0deg); } 
+    to { transform: translateY(-20vh) rotate(360deg); } 
+  }
+
+  .app-container {
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 40px 20px; position: relative; z-index: 10;
+  }
+
+  .app-card { 
+    width: 100%; max-width: 550px; padding: 45px 40px; border-radius: 32px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border); backdrop-filter: blur(30px); 
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+  }
+
+  .back-link {
+    position: absolute; top: 20px; left: 20px; z-index: 100;
+    color: var(--brand); text-decoration: none; font-weight: 600;
+    font-size: 14px; display: flex; align-items: center; gap: 6px;
+    transition: 0.2s;
+  }
+  .back-link:hover { gap: 10px; }
+
+  .badge { 
+    display: inline-flex; padding: 6px 14px; border-radius: 100px; 
+    background: rgba(74, 222, 128, 0.1); border: 1px solid rgba(74, 222, 128, 0.2); 
+    color: #4ade80; font-size: 11px; font-weight: 800; 
+    text-transform: uppercase; margin-bottom: 20px; 
+  }
+
+  h1 { 
+    font-size: 32px; margin: 0 0 10px; font-weight: 800; color: #fff; 
+  }
+
+  .desc {
+    color: rgba(255,255,255,0.5); font-size: 14px; 
+    margin-bottom: 30px; line-height: 1.6;
+  }
+
+  label { 
+    display: block; font-size: 11px; font-weight: 700; 
+    color: var(--brand); text-transform: uppercase; 
+    margin-bottom: 6px; letter-spacing: 0.5px;
+  }
+
+  input, select, textarea { 
+    width: 100%; padding: 12px 16px; border-radius: 12px; 
+    border: 1px solid var(--border); background: rgba(0,0,0,0.3); 
+    color: #fff; font-size: 14px; margin-bottom: 15px; outline: none;
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: 0.3s;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--brand); background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(43,101,255,0.3);
+  }
+
+  textarea { resize: vertical; min-height: 70px; }
+
+  .field-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
+  }
+
+  .file-input {
+    padding: 15px; border: 2px dashed var(--border); background: none;
+    cursor: pointer; transition: 0.3s;
+  }
+
+  .file-input:hover {
+    border-color: var(--brand);
+  }
+
+  .submit-btn { 
+    width: 100%; padding: 18px; border-radius: 16px; border: 0; 
+    background: var(--brand); color: #fff; font-weight: 800; 
+    cursor: pointer; box-shadow: 0 10px 30px rgba(43, 101, 255, 0.3);
+    transition: 0.3s; font-size: 16px;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(43, 101, 255, 0.5);
+  }
+
+  .info-note {
+    background: rgba(43,101,255,0.1); border: 1px solid var(--brand);
+    border-radius: 12px; padding: 16px; margin-bottom: 20px;
+  }
+
+  .info-note p {
+    color: var(--brand); margin: 0; font-size: 13px; line-height: 1.6;
+  }
+
+  @media(max-width: 600px) {
+    .app-card { padding: 35px 24px; }
+    h1 { font-size: 26px; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <a href="partners-hub.html" class="back-link">← Back to Partners Hub</a>
+
+  <div class="page-bg" id="bg">
+    <div class="blob" style="top:-10%; left:-10%; background: #4ade80;"></div>
+  </div>
+
+  <div class="app-container">
+    <div class="app-card">
+      <div class="badge">✓ Priority Designer Access</div>
+      <h1>Custom Creative Request</h1>
+      <p class="desc">Get high-converting 1XBET banners, videos, or landing pages tailored to your traffic. Turnaround time: 24-48 hours.</p>
+
+      <div class="info-note">
+        <p>
+          💡 <strong>Pro Tip:</strong> The more details you provide, the better the output. 
+          Include target audience, preferred colors, and any reference designs.
+        </p>
+      </div>
+
+      <form onsubmit="handleCreativeSubmit(event)">
+        <div class="field-row">
+          <div>
+            <label>Your Promo Code *</label>
+            <input type="text" id="promo" placeholder="e.g. ZAYN1x" required>
+          </div>
+          <div>
+            <label>Your Account ID *</label>
+            <input type="text" id="accountid" placeholder="1234567" required>
+          </div>
+        </div>
+
+        <label>Creative Type *</label>
+        <select id="creativetype" required>
+          <option value="">Select type...</option>
+          <option>Static Banner (Image)</option>
+          <option>Animated Banner (GIF/Video)</option>
+          <option>Instagram Story Template</option>
+          <option>TikTok Video Template</option>
+          <option>Landing Page HTML</option>
+          <option>YouTube Thumbnail</option>
+          <option>Facebook Ad Creative</option>
+          <option>Email Template</option>
+        </select>
+
+        <label>Size / Dimensions *</label>
+        <select id="dimensions" required>
+          <option value="">Select size...</option>
+          <option>1080x1080 (Instagram Post)</option>
+          <option>1080x1920 (Story/TikTok Vertical)</option>
+          <option>1920x1080 (YouTube Thumbnail)</option>
+          <option>728x90 (Banner)</option>
+          <option>300x250 (Medium Rectangle)</option>
+          <option>160x600 (Skyscraper)</option>
+          <option>Custom (specify in notes)</option>
+        </select>
+
+        <label>Primary Message / Offer *</label>
+        <textarea id="message" rows="2" placeholder="e.g., 200% First Deposit Bonus • Champions League Special • Use code ZAYN1x" required></textarea>
+
+        <label>Target Audience / GEO</label>
+        <input type="text" id="geo" placeholder="e.g., Egypt, UAE, India (English/Arabic)">
+
+        <label>Preferred Colors / Style</label>
+        <input type="text" id="colors" placeholder="e.g., Blue & Gold, Dark mode, Neon style">
+
+        <label>Reference Image (Optional)</label>
+        <input type="file" id="reference" class="file-input" accept="image/*">
+
+        <label>Additional Notes</label>
+        <textarea id="notes" rows="3" placeholder="Any specific requirements? Font preferences? CTA text? Deadline urgency?"></textarea>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 20px;">
+          <input type="checkbox" id="urgent" style="width: auto; margin: 0;">
+          <label for="urgent" style="margin: 0; text-transform: none; font-size: 13px; color: #fff; cursor: pointer;">
+            🔥 Rush delivery (12 hours) - for active campaigns only
+          </label>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Creative Request</button>
+      </form>
+
+      <p style="text-align: center; color: rgba(255,255,255,0.35); font-size: 12px; margin-top: 20px;">
+        You'll receive a Telegram message once your creative is ready for review.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const bg = document.getElementById('bg');
+    const chars = ['1', 'X', 'B', 'E', 'T'];
+    
+    function createChar(init) {
+      const el = document.createElement('div');
+      el.className = 'float-char';
+      el.innerText = chars[Math.floor(Math.random() * chars.length)];
+      const dur = Math.random() * 15 + 10;
+      el.style.fontSize = (Math.random() * 60 + 20) + 'px';
+      el.style.left = (Math.random() * 100) + 'vw';
+      el.style.animationDuration = dur + 's';
+      if(init) el.style.bottom = (Math.random() * 120) + 'vh';
+      else el.style.bottom = '-20vh';
+      bg.appendChild(el);
+      setTimeout(() => el.remove(), dur * 1000);
+    }
+    
+    for(let i=0; i<20; i++) createChar(true);
+    setInterval(() => createChar(false), 1000);
+
+    function handleCreativeSubmit(event) {
+      event.preventDefault();
+      
+      const formData = {
+        promo: document.getElementById('promo').value,
+        accountid: document.getElementById('accountid').value,
+        creativetype: document.getElementById('creativetype').value,
+        dimensions: document.getElementById('dimensions').value,
+        message: document.getElementById('message').value,
+        geo: document.getElementById('geo').value,
+        colors: document.getElementById('colors').value,
+        notes: document.getElementById('notes').value,
+        urgent: document.getElementById('urgent').checked,
+      };
+
+      const referenceFile = document.getElementById('reference').files[0];
+      if (referenceFile) {
+        formData.reference = referenceFile.name;
+      }
+
+      // In production, send to backend/API
+      console.log('Creative request submitted:', formData);
+
+      const urgentText = formData.urgent ? '\n⚡ Rush delivery requested - 12 hours' : '\n📅 Standard delivery - 24-48 hours';
+      
+      alert('✓ Creative Request Submitted!' + urgentText + '\n\nYour request has been sent to the design team. You will receive a notification on Telegram once the creative is ready.\n\nRequest ID: CR-' + Date.now());
+
+      // Optional: redirect
+      // window.location.href = 'partners-hub.html';
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
